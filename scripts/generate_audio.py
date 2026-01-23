@@ -19,12 +19,13 @@ def load_env(env_path):
     return env
 
 
-def extract_common_codes(app_js_path):
-    text = app_js_path.read_text(encoding="utf-8")
-    match = re.search(r"const commonCodes = \[(.*?)\];", text, re.S)
+def extract_pack_codes(countries_js_path):
+    text = countries_js_path.read_text(encoding="utf-8")
+    match = re.search(r"const packs = \{(.*?)\};", text, re.S)
     if not match:
-        raise RuntimeError("Unable to find commonCodes in app.js")
-    return re.findall(r'"([a-z]{2})"', match.group(1))
+        raise RuntimeError("Unable to find packs in countries.js")
+    codes = set(re.findall(r'"([a-z]{2})"', match.group(1)))
+    return sorted(codes)
 
 
 def fetch_country_names():
@@ -95,7 +96,7 @@ def main():
         "ELEVEN_LABS_MODEL_ID", "eleven_multilingual_v2"
     )
 
-    common_codes = extract_common_codes(root / "app.js")
+    pack_codes = extract_pack_codes(root / "countries.js")
     country_names = fetch_country_names()
 
     audio_dir = root / "assets" / "audio" / voice_id
@@ -113,7 +114,7 @@ def main():
         ):
             created += 1
 
-    for code in common_codes:
+    for code in pack_codes:
         name = country_names.get(code)
         if not name:
             continue

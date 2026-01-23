@@ -2,6 +2,7 @@
 const elements = {
   startScreen: document.getElementById("start-screen"),
   startButton: document.getElementById("start"),
+  packOptions: document.getElementById("pack-options"),
   gameSection: document.getElementById("game"),
   message: document.getElementById("message"),
   flagImage: document.getElementById("flag"),
@@ -13,35 +14,21 @@ const elements = {
 
 // Game Configuration
 const CONFIG = {
-  totalQuestions: 5,
+  totalQuestions: 10,
   flagBasePath: "assets/flags",
   optionRevealDelay: 120,
-  winThreshold: 4,
+  winThreshold: 8,
 };
-
-// Country codes for the current level
-const LEVEL_CODES = new Set([
-  "us", "gb", "fr", "de", "it", "es", "pt", "ca", "br", "ru",
-  "ua", "kz", "jp", "cn", "kr", "in", "au", "nz", "za", "fi", "tr",
-]);
 
 // Audio Configuration
 const AUDIO_VOICE_ID = "kPzsL2i3teMYv0FxEYQ6";
 const AUDIO_BASE_PATH = `assets/audio/${AUDIO_VOICE_ID}`;
 const AUDIO_SOURCES = {
-  question: `${AUDIO_BASE_PATH}/question2.mp3`,
-  positive: "assets/audio/positive2.mp3",
-  negative: "assets/audio/negative2.mp3",
+  question: `${AUDIO_BASE_PATH}/question.mp3`,
+  positive: "assets/audio/positive.mp3",
+  negative: "assets/audio/negative.mp3",
   background: "assets/audio/background.mp3",
-  celebration: "assets/audio/celebration2.mp3",
-  incorrect: `${AUDIO_BASE_PATH}/incorrect2.mp3`,
-  congrats: `${AUDIO_BASE_PATH}/congrats2.mp3`,
-  tryAgain: `${AUDIO_BASE_PATH}/try_again2.mp3`,
-  correct: [
-    `${AUDIO_BASE_PATH}/correct_12.mp3`,
-    `${AUDIO_BASE_PATH}/correct_22.mp3`,
-    `${AUDIO_BASE_PATH}/correct_32.mp3`,
-  ],
+  celebration: "assets/audio/celebration.mp3",
   score: (value) => `${AUDIO_BASE_PATH}/score_${value}.mp3`,
   country: (code) => `${AUDIO_BASE_PATH}/${code}.mp3`,
 };
@@ -56,6 +43,7 @@ const state = {
   isLocked: false,
   audioEnabled: false,
   audioAllowed: false,
+  selectedPack: null,
 };
 
 // Audio State
@@ -136,8 +124,10 @@ const playAudio = (src) =>
   });
 
 // Game Logic
-const getCountryPool = () =>
-  countries.filter((country) => LEVEL_CODES.has(country.code));
+const getCountryPool = () => {
+  const codes = new Set(state.selectedPack.codes);
+  return countries.filter((country) => codes.has(country.code));
+};
 
 const getRandomCountry = (pool, excludeCodes = []) => {
   const available = pool.filter((country) => !excludeCodes.includes(country.code));
@@ -177,12 +167,13 @@ const renderOptions = (options) => {
 const revealOptionsSequentially = async (options) => {
   renderOptions(options);
   const buttons = elements.options.querySelectorAll(".option");
+  const packCodes = new Set(state.selectedPack.codes);
 
   for (const button of buttons) {
     await wait(CONFIG.optionRevealDelay);
     button.classList.add("show");
 
-    if (state.audioEnabled && LEVEL_CODES.has(button.dataset.code)) {
+    if (state.audioEnabled && packCodes.has(button.dataset.code)) {
       await playAudio(AUDIO_SOURCES.country(button.dataset.code));
     }
   }
@@ -244,13 +235,11 @@ const handleGuess = async (code, button) => {
     state.score += 1;
     if (state.audioEnabled) {
       await playAudio(AUDIO_SOURCES.positive);
-      await playAudio(getRandomItem(AUDIO_SOURCES.correct));
     }
   } else {
     button.classList.add("wrong");
     if (state.audioEnabled) {
       await playAudio(AUDIO_SOURCES.negative);
-      await playAudio(AUDIO_SOURCES.incorrect);
     }
   }
 
@@ -272,10 +261,7 @@ const endGame = async () => {
     
     if (state.score >= CONFIG.winThreshold) {
       await playAudio(AUDIO_SOURCES.celebration);
-      await playAudio(AUDIO_SOURCES.congrats);
-    } else {
-      await playAudio(AUDIO_SOURCES.tryAgain);
-    }
+    } 
 
     await playAudio(AUDIO_SOURCES.score(state.score));
   }
@@ -293,11 +279,17 @@ const resetGameState = () => {
   elements.nextButton.classList.add("is-hidden");
 };
 
+const getSelectedPackId = () => {
+  const selected = elements.packOptions.querySelector(".pack-option.selected");
+  return selected ? selected.dataset.pack : "starter";
+};
+
 const startGame = () => {
   setMessage("");
   showScreen("game");
   resetGameState();
 
+  state.selectedPack = packs[getSelectedPackId()];
   state.pool = getCountryPool();
   state.audioEnabled = state.audioAllowed;
 
@@ -311,6 +303,16 @@ const startGame = () => {
 
 // Event Listeners
 elements.nextButton.addEventListener("click", nextQuestion);
+
+elements.packOptions.addEventListener("click", (e) => {
+  const button = e.target.closest(".pack-option");
+  if (!button) return;
+
+  elements.packOptions.querySelectorAll(".pack-option").forEach((btn) => {
+    btn.classList.remove("selected");
+  });
+  button.classList.add("selected");
+});
 
 elements.startButton.addEventListener("click", () => {
   state.audioAllowed = true;

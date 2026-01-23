@@ -1,4 +1,4 @@
-const CACHE_NAME = 'flag-game-v2';
+const CACHE_NAME = 'flag-game-v3';
 
 const CORE_ASSETS = [
   './',

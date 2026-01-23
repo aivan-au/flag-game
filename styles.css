@@ -36,6 +36,15 @@ body {
   min-height: 360px;
 }
 
+.version-info {
+  position: absolute;
+  bottom: 16px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .start-button {
   font-size: 32px;
   padding: 18px 40px;

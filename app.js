@@ -29,18 +29,18 @@ const LEVEL_CODES = new Set([
 const AUDIO_VOICE_ID = "kPzsL2i3teMYv0FxEYQ6";
 const AUDIO_BASE_PATH = `assets/audio/${AUDIO_VOICE_ID}`;
 const AUDIO_SOURCES = {
-  question: `${AUDIO_BASE_PATH}/question.mp3`,
-  positive: "assets/audio/positive.mp3",
-  negative: "assets/audio/negative.mp3",
+  question: `${AUDIO_BASE_PATH}/question2.mp3`,
+  positive: "assets/audio/positive2.mp3",
+  negative: "assets/audio/negative2.mp3",
   background: "assets/audio/background.mp3",
-  celebration: "assets/audio/celebration.mp3",
-  incorrect: `${AUDIO_BASE_PATH}/incorrect.mp3`,
-  congrats: `${AUDIO_BASE_PATH}/congrats.mp3`,
-  tryAgain: `${AUDIO_BASE_PATH}/try_again.mp3`,
+  celebration: "assets/audio/celebration2.mp3",
+  incorrect: `${AUDIO_BASE_PATH}/incorrect2.mp3`,
+  congrats: `${AUDIO_BASE_PATH}/congrats2.mp3`,
+  tryAgain: `${AUDIO_BASE_PATH}/try_again2.mp3`,
   correct: [
-    `${AUDIO_BASE_PATH}/correct.mp3`,
-    `${AUDIO_BASE_PATH}/correct_alt1.mp3`,
-    `${AUDIO_BASE_PATH}/correct_alt2.mp3`,
+    `${AUDIO_BASE_PATH}/correct_12.mp3`,
+    `${AUDIO_BASE_PATH}/correct_22.mp3`,
+    `${AUDIO_BASE_PATH}/correct_32.mp3`,
   ],
   score: (value) => `${AUDIO_BASE_PATH}/score_${value}.mp3`,
   country: (code) => `${AUDIO_BASE_PATH}/${code}.mp3`,
@@ -269,14 +269,15 @@ const endGame = async () => {
 
   if (state.audioEnabled) {
     stopAudio();
-    await playAudio(AUDIO_SOURCES.score(state.score));
-
+    
     if (state.score >= CONFIG.winThreshold) {
       await playAudio(AUDIO_SOURCES.celebration);
       await playAudio(AUDIO_SOURCES.congrats);
     } else {
       await playAudio(AUDIO_SOURCES.tryAgain);
     }
+
+    await playAudio(AUDIO_SOURCES.score(state.score));
   }
 };
 

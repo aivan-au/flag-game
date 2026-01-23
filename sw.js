@@ -1,4 +1,4 @@
-const CACHE_NAME = 'flag-game-1.1.0';
+const CACHE_NAME = 'flag-game-1.1.1';
 
 const CORE_ASSETS = [
   './',
@@ -14,9 +14,9 @@ const CORE_ASSETS = [
   './assets/audio/negative.mp3',
   './assets/audio/celebration.mp3',
   './assets/audio/kPzsL2i3teMYv0FxEYQ6/question.mp3',
-  './assets/audio/kPzsL2i3teMYv0FxEYQ6/correct.mp3',
-  './assets/audio/kPzsL2i3teMYv0FxEYQ6/correct_alt1.mp3',
-  './assets/audio/kPzsL2i3teMYv0FxEYQ6/correct_alt2.mp3',
+  './assets/audio/kPzsL2i3teMYv0FxEYQ6/correct_1.mp3',
+  './assets/audio/kPzsL2i3teMYv0FxEYQ6/correct_2.mp3',
+  './assets/audio/kPzsL2i3teMYv0FxEYQ6/correct_3.mp3',
   './assets/audio/kPzsL2i3teMYv0FxEYQ6/incorrect.mp3',
   './assets/audio/kPzsL2i3teMYv0FxEYQ6/congrats.mp3',
   './assets/audio/kPzsL2i3teMYv0FxEYQ6/try_again.mp3',

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Flag Guessing Game</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta name="description" content="A fun flag guessing game for kids" />
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- iOS PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Flag Game" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="start-screen" class="start-screen">
+        <button id="start" class="start-button">Start</button>
+      </section>
+
+      <section id="game" class="game hidden">
+        <div class="status">
+          <span id="progress">0 / 10</span>
+          <span id="score">Score: 0</span>
+        </div>
+
+        <div class="layout">
+          <img id="flag" class="flag" alt="Country flag" />
+          <div id="options" class="options"></div>
+        </div>
+
+        <div class="actions">
+        <button id="next" class="start-button next-button is-hidden">
+          Next
+        </button>
+          <button id="restart" class="is-hidden">Play Again</button>
+        </div>
+      </section>
+
+      <section id="message" class="message hidden"></section>
+    </main>
+
+    <script src="countries.js"></script>
+    <script src="app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+      }
+    </script>
+  </body>
+</html>

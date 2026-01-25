@@ -54,7 +54,7 @@ State is kept in the `state` object (pool, used codes, question number, score, a
 ## Testing & Validation
 - Manual: Serve via simple HTTP server (`python3 -m http.server`) and exercise Start button, selecting packs, answering questions, and verifying audio toggles, progress, and score display.
 - Since there's no automated test suite, rely on browser dev tools for console errors and `network` tab to confirm assets load.
-- Keep `index.html` query strings for cache busting (`?v=1.2.1`) if you want to force reloads when deploying.
+- Keep `index.html` query strings for cache busting (`?v=1.2.2`) if you want to force reloads when deploying.
 
 ## Communication Notes
 - No database or backend—everything runs in the browser. Avoid searching server directories or running database migrations.

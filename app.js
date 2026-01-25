@@ -16,6 +16,11 @@ const elements = {
   resultIcon: document.querySelector(".result-icon"),
   resultTitle: document.querySelector(".result-title"),
   resultScore: document.querySelector(".result-score"),
+  // Options
+  musicToggle: document.getElementById("music-toggle"),
+  voiceToggle: document.getElementById("voice-toggle"),
+  autoAdvanceToggle: document.getElementById("auto-advance-toggle"),
+  questionsSelect: document.getElementById("questions-select"),
 };
 
 // Game Configuration
@@ -23,7 +28,8 @@ const CONFIG = {
   totalQuestions: 10,
   flagBasePath: "assets/flags",
   optionRevealDelay: 120,
-  winThreshold: 8,
+  winThresholdPercent: 80,
+  autoAdvanceDelay: 1000,
 };
 
 // Audio Configuration
@@ -49,6 +55,8 @@ const state = {
   isLocked: false,
   audioEnabled: false,
   audioAllowed: false,
+  voiceEnabled: true,
+  autoAdvance: false,
   selectedPack: null,
   results: [], // Track correct/wrong for each question
 };
@@ -104,7 +112,7 @@ const updateEndScreen = () => {
 
   elements.resultScore.textContent = `${score} / ${total}`;
 
-  if (percentage >= 80) {
+  if (percentage >= CONFIG.winThresholdPercent) {
     elements.resultIcon.src = "assets/images/cup.png";
     elements.resultTitle.textContent = "Congratulations!";
   } else {
@@ -122,6 +130,45 @@ const stopAudio = () => {
   }
 };
 
+const getMusicEnabled = () => {
+  const saved = localStorage.getItem("musicEnabled");
+  return saved === null ? true : saved === "true";
+};
+
+const setMusicEnabled = (enabled) => {
+  localStorage.setItem("musicEnabled", enabled);
+};
+
+const getQuestionsPerRound = () => {
+  const saved = localStorage.getItem("questionsPerRound");
+  return saved ? parseInt(saved, 10) : 10;
+};
+
+const setQuestionsPerRound = (count) => {
+  localStorage.setItem("questionsPerRound", count);
+  CONFIG.totalQuestions = count;
+};
+
+const getVoiceEnabled = () => {
+  const saved = localStorage.getItem("voiceEnabled");
+  return saved === null ? true : saved === "true";
+};
+
+const setVoiceEnabled = (enabled) => {
+  localStorage.setItem("voiceEnabled", enabled);
+  state.voiceEnabled = enabled;
+};
+
+const getAutoAdvance = () => {
+  const saved = localStorage.getItem("autoAdvance");
+  return saved === "true";
+};
+
+const setAutoAdvance = (enabled) => {
+  localStorage.setItem("autoAdvance", enabled);
+  state.autoAdvance = enabled;
+};
+
 const startBackgroundAudio = () => {
   if (audio.background) return;
 
@@ -129,7 +176,23 @@ const startBackgroundAudio = () => {
   bgAudio.loop = true;
   bgAudio.volume = 1;
   audio.background = bgAudio;
-  bgAudio.play().catch(() => {});
+
+  // Only play if music is enabled in settings
+  if (getMusicEnabled()) {
+    bgAudio.play().catch(() => {});
+  }
+};
+
+const toggleBackgroundAudio = (enabled) => {
+  setMusicEnabled(enabled);
+
+  if (!audio.background) return;
+
+  if (enabled) {
+    audio.background.play().catch(() => {});
+  } else {
+    audio.background.pause();
+  }
 };
 
 const playAudio = (src) =>
@@ -198,6 +261,13 @@ const renderOptions = (options) => {
 const revealOptionsSequentially = async (options) => {
   renderOptions(options);
   const buttons = elements.options.querySelectorAll(".option");
+
+  // If voice is disabled, show all options immediately
+  if (!state.voiceEnabled) {
+    buttons.forEach((button) => button.classList.add("show"));
+    return;
+  }
+
   const packCodes = new Set(state.selectedPack.codes);
 
   for (const button of buttons) {
@@ -211,7 +281,10 @@ const revealOptionsSequentially = async (options) => {
 };
 
 const nextQuestion = async () => {
-  if (state.questionNumber >= CONFIG.totalQuestions) return;
+  if (state.questionNumber >= CONFIG.totalQuestions) {
+    endGame();
+    return;
+  }
 
   state.questionNumber += 1;
   state.isLocked = false;
@@ -237,7 +310,7 @@ const nextQuestion = async () => {
     elements.flagImage.onload = null;
     elements.flagImage.classList.remove("hidden");
 
-    if (state.audioEnabled) {
+    if (state.audioEnabled && state.voiceEnabled) {
       await playAudio(AUDIO_SOURCES.question);
     }
     await revealOptionsSequentially(options);
@@ -270,12 +343,12 @@ const handleGuess = async (code, button) => {
   if (isCorrect) {
     state.score += 1;
     if (state.audioEnabled) {
-      await playAudio(AUDIO_SOURCES.positive);
+      playAudio(AUDIO_SOURCES.positive); // Don't await - show next button immediately
     }
   } else {
     button.classList.add("wrong");
     if (state.audioEnabled) {
-      await playAudio(AUDIO_SOURCES.negative);
+      playAudio(AUDIO_SOURCES.negative); // Don't await - show next button immediately
     }
   }
 
@@ -283,8 +356,11 @@ const handleGuess = async (code, button) => {
   updateProgressPip(state.questionNumber - 1, isCorrect);
   state.results.push(isCorrect);
 
-  if (state.questionNumber >= CONFIG.totalQuestions) {
-    endGame();
+  if (state.autoAdvance && isCorrect) {
+    // Auto-advance after delay on correct answer
+    setTimeout(() => {
+      nextQuestion();
+    }, CONFIG.autoAdvanceDelay);
   } else {
     elements.nextButton.classList.remove("hidden");
   }
@@ -297,11 +373,14 @@ const endGame = async () => {
   if (state.audioEnabled) {
     stopAudio();
 
-    if (state.score >= CONFIG.winThreshold) {
-      await playAudio(AUDIO_SOURCES.celebration);
+    const percentage = (state.score / CONFIG.totalQuestions) * 100;
+    if (percentage >= CONFIG.winThresholdPercent) {
+      playAudio(AUDIO_SOURCES.celebration); // Sound effect - not tied to voice
     }
 
-    await playAudio(AUDIO_SOURCES.score(state.score));
+    if (state.voiceEnabled) {
+      await playAudio(AUDIO_SOURCES.score(state.score));
+    }
   }
 };
 
@@ -369,4 +448,41 @@ elements.playAgainButton.addEventListener("click", () => {
 
 elements.endExitButton.addEventListener("click", () => {
   showScreen("start");
+});
+
+elements.musicToggle.addEventListener("change", (e) => {
+  toggleBackgroundAudio(e.target.checked);
+});
+
+elements.voiceToggle.addEventListener("change", (e) => {
+  setVoiceEnabled(e.target.checked);
+});
+
+elements.autoAdvanceToggle.addEventListener("change", (e) => {
+  setAutoAdvance(e.target.checked);
+});
+
+elements.questionsSelect.addEventListener("click", (e) => {
+  const btn = e.target.closest(".segment-btn");
+  if (!btn) return;
+
+  elements.questionsSelect.querySelectorAll(".segment-btn").forEach((b) => {
+    b.classList.remove("selected");
+  });
+  btn.classList.add("selected");
+  setQuestionsPerRound(parseInt(btn.dataset.value, 10));
+});
+
+// Initialize settings from saved preferences
+elements.musicToggle.checked = getMusicEnabled();
+elements.voiceToggle.checked = getVoiceEnabled();
+state.voiceEnabled = getVoiceEnabled();
+elements.autoAdvanceToggle.checked = getAutoAdvance();
+state.autoAdvance = getAutoAdvance();
+
+// Initialize questions per round
+const savedQuestions = getQuestionsPerRound();
+CONFIG.totalQuestions = savedQuestions;
+elements.questionsSelect.querySelectorAll(".segment-btn").forEach((btn) => {
+  btn.classList.toggle("selected", parseInt(btn.dataset.value, 10) === savedQuestions);
 });

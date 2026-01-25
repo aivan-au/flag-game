@@ -239,5 +239,12 @@ const packs = {
   richest: {
     name: "Richest",
     codes: ["us", "cn", "de", "jp", "in", "gb", "fr", "it", "ru", "ca", "br", "es", "mx", "kr", "au", "tr", "id", "nl", "sa", "pl"]
+  },
+  all: {
+    name: "All Countries",
+    codes: [] // Will be populated dynamically
   }
 };
+
+// Populate "all" pack with every country code
+packs.all.codes = countries.map(c => c.code);

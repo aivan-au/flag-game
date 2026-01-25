@@ -1,15 +1,21 @@
 // DOM Elements
 const elements = {
   startScreen: document.getElementById("start-screen"),
-  startButton: document.getElementById("start"),
+  gameScreen: document.getElementById("game-screen"),
+  endScreen: document.getElementById("end-screen"),
+  startButton: document.getElementById("start-btn"),
   packOptions: document.getElementById("pack-options"),
-  gameSection: document.getElementById("game"),
-  message: document.getElementById("message"),
   flagImage: document.getElementById("flag"),
   options: document.getElementById("options"),
-  progress: document.getElementById("progress"),
-  score: document.getElementById("score"),
-  nextButton: document.getElementById("next"),
+  progressBar: document.getElementById("progress-bar"),
+  nextButton: document.getElementById("next-btn"),
+  exitButton: document.getElementById("exit-btn"),
+  playAgainButton: document.getElementById("play-again-btn"),
+  endExitButton: document.getElementById("end-exit-btn"),
+  // End screen result elements
+  resultIcon: document.querySelector(".result-icon"),
+  resultTitle: document.querySelector(".result-title"),
+  resultScore: document.querySelector(".result-score"),
 };
 
 // Game Configuration
@@ -44,6 +50,7 @@ const state = {
   audioEnabled: false,
   audioAllowed: false,
   selectedPack: null,
+  results: [], // Track correct/wrong for each question
 };
 
 // Audio State
@@ -67,19 +74,43 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const getRandomItem = (array) => array[Math.floor(Math.random() * array.length)];
 
 // UI Functions
-const setMessage = (text) => {
-  elements.message.textContent = text;
-  elements.message.classList.toggle("hidden", !text);
-};
-
-const updateStatus = () => {
-  elements.progress.textContent = `${state.questionNumber} / ${CONFIG.totalQuestions}`;
-  elements.score.textContent = `Score: ${state.score}`;
-};
-
 const showScreen = (screen) => {
   elements.startScreen.classList.toggle("hidden", screen !== "start");
-  elements.gameSection.classList.toggle("hidden", screen !== "game");
+  elements.gameScreen.classList.toggle("hidden", screen !== "game");
+  elements.endScreen.classList.toggle("hidden", screen !== "end");
+};
+
+const initProgressBar = () => {
+  elements.progressBar.innerHTML = "";
+  state.results = [];
+  for (let i = 0; i < CONFIG.totalQuestions; i++) {
+    const pip = document.createElement("div");
+    pip.className = "progress-pip";
+    elements.progressBar.appendChild(pip);
+  }
+};
+
+const updateProgressPip = (index, isCorrect) => {
+  const pips = elements.progressBar.querySelectorAll(".progress-pip");
+  if (pips[index]) {
+    pips[index].classList.add(isCorrect ? "correct" : "wrong");
+  }
+};
+
+const updateEndScreen = () => {
+  const score = state.score;
+  const total = CONFIG.totalQuestions;
+  const percentage = (score / total) * 100;
+
+  elements.resultScore.textContent = `${score} / ${total}`;
+
+  if (percentage >= 80) {
+    elements.resultIcon.src = "assets/images/cup.png";
+    elements.resultTitle.textContent = "Congratulations!";
+  } else {
+    elements.resultIcon.src = "assets/images/lamp.png";
+    elements.resultTitle.textContent = "You've learned a lot!";
+  }
 };
 
 // Audio Functions
@@ -184,8 +215,7 @@ const nextQuestion = async () => {
 
   state.questionNumber += 1;
   state.isLocked = false;
-  updateStatus();
-  elements.nextButton.classList.add("is-hidden");
+  elements.nextButton.classList.add("hidden");
   elements.options.innerHTML = "";
   stopAudio();
 
@@ -193,7 +223,7 @@ const nextQuestion = async () => {
   const answer = getRandomCountry(available);
 
   if (!answer) {
-    setMessage("Not enough countries available.");
+    console.error("Not enough countries available.");
     return;
   }
 
@@ -222,14 +252,20 @@ const handleGuess = async (code, button) => {
   stopAudio();
 
   const buttons = elements.options.querySelectorAll(".option");
+  const isCorrect = code === state.currentAnswer.code;
+
   buttons.forEach((btn) => {
+    // Immediately reveal any hidden options
+    btn.classList.add("show");
     btn.disabled = true;
+
     if (btn.dataset.code === state.currentAnswer.code) {
       btn.classList.add("correct");
+    } else if (btn !== button) {
+      // Mark non-clicked, non-correct options as inactive
+      btn.classList.add("inactive");
     }
   });
-
-  const isCorrect = code === state.currentAnswer.code;
 
   if (isCorrect) {
     state.score += 1;
@@ -243,25 +279,27 @@ const handleGuess = async (code, button) => {
     }
   }
 
-  updateStatus();
+  // Update progress pip for this question
+  updateProgressPip(state.questionNumber - 1, isCorrect);
+  state.results.push(isCorrect);
 
   if (state.questionNumber >= CONFIG.totalQuestions) {
     endGame();
   } else {
-    elements.nextButton.classList.remove("is-hidden");
+    elements.nextButton.classList.remove("hidden");
   }
 };
 
 const endGame = async () => {
-  showScreen("start");
-  setMessage(`Your score is ${state.score}/${CONFIG.totalQuestions}`);
+  updateEndScreen();
+  showScreen("end");
 
   if (state.audioEnabled) {
     stopAudio();
-    
+
     if (state.score >= CONFIG.winThreshold) {
       await playAudio(AUDIO_SOURCES.celebration);
-    } 
+    }
 
     await playAudio(AUDIO_SOURCES.score(state.score));
   }
@@ -273,19 +311,19 @@ const resetGameState = () => {
   state.questionNumber = 0;
   state.score = 0;
   state.isLocked = false;
+  state.results = [];
 
-  updateStatus();
   elements.options.innerHTML = "";
-  elements.nextButton.classList.add("is-hidden");
+  elements.nextButton.classList.add("hidden");
+  initProgressBar();
 };
 
 const getSelectedPackId = () => {
-  const selected = elements.packOptions.querySelector(".pack-option.selected");
-  return selected ? selected.dataset.pack : "starter";
+  const selected = elements.packOptions.querySelector(".pack-card.selected");
+  return selected ? selected.dataset.pack : "europe";
 };
 
 const startGame = () => {
-  setMessage("");
   showScreen("game");
   resetGameState();
 
@@ -294,7 +332,7 @@ const startGame = () => {
   state.audioEnabled = state.audioAllowed;
 
   if (state.pool.length < CONFIG.totalQuestions) {
-    setMessage(`Not enough countries to play ${CONFIG.totalQuestions} rounds.`);
+    console.error(`Not enough countries to play ${CONFIG.totalQuestions} rounds.`);
     return;
   }
 
@@ -305,10 +343,10 @@ const startGame = () => {
 elements.nextButton.addEventListener("click", nextQuestion);
 
 elements.packOptions.addEventListener("click", (e) => {
-  const button = e.target.closest(".pack-option");
+  const button = e.target.closest(".pack-card");
   if (!button) return;
 
-  elements.packOptions.querySelectorAll(".pack-option").forEach((btn) => {
+  elements.packOptions.querySelectorAll(".pack-card").forEach((btn) => {
     btn.classList.remove("selected");
   });
   button.classList.add("selected");
@@ -318,4 +356,17 @@ elements.startButton.addEventListener("click", () => {
   state.audioAllowed = true;
   startBackgroundAudio();
   startGame();
+});
+
+elements.exitButton.addEventListener("click", () => {
+  stopAudio();
+  showScreen("start");
+});
+
+elements.playAgainButton.addEventListener("click", () => {
+  startGame();
+});
+
+elements.endExitButton.addEventListener("click", () => {
+  showScreen("start");
 });

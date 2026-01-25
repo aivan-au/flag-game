@@ -3,18 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>Flag Guessing Game</title>
-
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#1a1a2e" />
-    <meta name="description" content="A fun flag guessing game for kids" />
-    <link rel="manifest" href="manifest.json" />
-
-    <!-- iOS PWA Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Flag Game" />
-    <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+    <title>Flag Game</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,57 +12,188 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.2.1" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="app">
-      <section id="start-screen" class="start-screen">
-        <div id="message" class="message hidden"></div>
-        <div class="start-layout">
-          <div class="pack-selector">
-            <h2 class="pack-header">Choose your pack</h2>
-            <div id="pack-options" class="pack-options">
-              <button class="pack-option selected" data-pack="starter">Starter</button>
-              <button class="pack-option" data-pack="europe">Europe Starter</button>
-              <button class="pack-option" data-pack="southAmerica">South America</button>
-              <button class="pack-option" data-pack="largest">Largest Countries</button>
-              <button class="pack-option" data-pack="richest">Richest Countries</button>
+      <!-- START SCREEN -->
+      <section id="start-screen" class="screen start-screen">
+        <header class="screen-header">
+          <button class="btn btn-icon hidden" id="options-btn" aria-label="Options">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </header>
+
+        <div class="screen-content">
+          <div class="pack-grid" id="pack-options">
+            <!-- Pack cards with images -->
+            <button class="pack-card selected" data-pack="largest">
+              <img class="pack-img" src="assets/images/large.png" alt="Largest" />
+              <span class="pack-label">Largest</span>
+            </button>
+            <button class="pack-card" data-pack="richest">
+              <img class="pack-img" src="assets/images/rich.png" alt="Richest" />
+              <span class="pack-label">Richest</span>
+            </button>
+            <button class="pack-card" data-pack="europe">
+              <img class="pack-img" src="assets/images/europe.png" alt="Europe" />
+              <span class="pack-label">Europe</span>
+            </button>
+            <button class="pack-card" data-pack="southAmerica">
+              <img class="pack-img" src="assets/images/south_america.png" alt="South America" />
+              <span class="pack-label">S. America</span>
+            </button>
+          </div>
+        </div>
+
+        <footer class="screen-footer">
+          <button class="btn btn-primary" id="start-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+              <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+            </svg>
+            Start
+          </button>
+          <div class="version-info">v2.0</div>
+        </footer>
+      </section>
+
+      <!-- GAME SCREEN -->
+      <section id="game-screen" class="screen game-screen hidden">
+        <header class="screen-header">
+          <button class="btn btn-icon" id="exit-btn" aria-label="Exit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+          <div class="progress-bar" id="progress-bar">
+            <!-- Progress pips generated dynamically -->
+          </div>
+        </header>
+
+        <div class="screen-content game-layout">
+          <div class="flag-container">
+            <img id="flag" class="flag hidden" alt="Country flag" />
+          </div>
+          <div id="options" class="options-grid">
+            <!-- Options generated dynamically -->
+          </div>
+        </div>
+
+        <footer class="screen-footer">
+          <button id="next-btn" class="btn btn-primary hidden">
+            Next
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </button>
+        </footer>
+      </section>
+
+      <!-- END SCREEN -->
+      <section id="end-screen" class="screen end-screen hidden">
+        <header class="screen-header">
+          <button class="btn btn-icon" id="end-exit-btn" aria-label="Exit to menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </header>
+
+        <div class="screen-content">
+          <div class="result-content">
+            <img class="result-icon" src="assets/images/cup.png" alt="Result" />
+            <h2 class="result-title">Congratulations!</h2>
+            <div class="result-score">8 / 10</div>
+          </div>
+        </div>
+
+        <footer class="screen-footer">
+          <button class="btn btn-primary" id="play-again-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+              <path d="M21 3v5h-5"></path>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+              <path d="M8 16H3v5"></path>
+            </svg>
+            Play Again
+          </button>
+        </footer>
+      </section>
+
+      <!-- OPTIONS MODAL -->
+      <div id="options-modal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Options</h2>
+            <button class="btn btn-icon" id="close-modal" aria-label="Close">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="options-list">
+            <label class="toggle-row">
+              <span class="toggle-label">Music</span>
+              <input type="checkbox" class="toggle-input" checked />
+              <span class="toggle-switch"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span class="toggle-label">Voice</span>
+              <input type="checkbox" class="toggle-input" checked />
+              <span class="toggle-switch"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span class="toggle-label">Auto-advance</span>
+              <input type="checkbox" class="toggle-input" />
+              <span class="toggle-switch"></span>
+            </label>
+          </div>
+
+          <div class="option-group">
+            <span class="option-group-label">Questions per round</span>
+            <div class="segment-control" id="questions-select">
+              <button class="segment-btn" data-value="5">5</button>
+              <button class="segment-btn selected" data-value="10">10</button>
+              <button class="segment-btn" data-value="20">20</button>
             </div>
           </div>
-          <div class="start-area">
-            <button id="start" class="start-button">Start</button>
-          </div>
         </div>
-        <div class="version-info">
-          v1.2.0 · Developed by Ivan Smirnov & Claude Code
-        </div>
-      </section>
-
-      <section id="game" class="game hidden">
-        <div class="status">
-          <span id="progress">0 / 10</span>
-          <span id="score">Score: 0</span>
-        </div>
-
-        <div class="layout">
-          <img id="flag" class="flag" alt="Country flag" />
-          <div id="options" class="options"></div>
-        </div>
-
-        <div class="actions">
-          <button id="next" class="start-button next-button is-hidden">
-            Next
-          </button>
-        </div>
-      </section>
+      </div>
     </main>
 
-    <script src="countries.js?v=1.2.1"></script>
-    <script src="app.js?v=1.2.1"></script>
     <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js');
-      }
+      // Options modal
+      document.getElementById('options-btn').addEventListener('click', () => {
+        document.getElementById('options-modal').classList.remove('hidden');
+      });
+      document.getElementById('close-modal').addEventListener('click', () => {
+        document.getElementById('options-modal').classList.add('hidden');
+      });
+
+      // Segment control for questions per round
+      document.querySelectorAll('.segment-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+      });
     </script>
+
+    <!-- Game scripts -->
+    <script src="countries.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

@@ -59,6 +59,7 @@ const state = {
   autoAdvance: false,
   selectedPack: null,
   results: [], // Track correct/wrong for each question
+  gameActive: false, // Track if game is in progress (for cancelling async operations)
 };
 
 // Audio State
@@ -214,6 +215,7 @@ const playAudio = (src) =>
 
     sound.addEventListener("ended", finish, { once: true });
     sound.addEventListener("error", finish, { once: true });
+    sound.addEventListener("pause", finish, { once: true }); // Resolve when stopped externally
     sound.play().catch(finish);
   });
 
@@ -271,7 +273,14 @@ const revealOptionsSequentially = async (options) => {
   const packCodes = new Set(state.selectedPack.codes);
 
   for (const button of buttons) {
+    // Stop if game was exited
+    if (!state.gameActive) return;
+
     await wait(CONFIG.optionRevealDelay);
+
+    // Check again after wait
+    if (!state.gameActive) return;
+
     button.classList.add("show");
 
     if (state.audioEnabled && packCodes.has(button.dataset.code)) {
@@ -308,11 +317,19 @@ const nextQuestion = async () => {
   elements.flagImage.classList.add("hidden");
   elements.flagImage.onload = async () => {
     elements.flagImage.onload = null;
+
+    // Stop if game was exited before image loaded
+    if (!state.gameActive) return;
+
     elements.flagImage.classList.remove("hidden");
 
     if (state.audioEnabled && state.voiceEnabled) {
       await playAudio(AUDIO_SOURCES.question);
     }
+
+    // Check again after audio
+    if (!state.gameActive) return;
+
     await revealOptionsSequentially(options);
   };
   elements.flagImage.src = `${CONFIG.flagBasePath}/${answer.code}.png`;
@@ -367,6 +384,7 @@ const handleGuess = async (code, button) => {
 };
 
 const endGame = async () => {
+  state.gameActive = false; // Game is over
   updateEndScreen();
   showScreen("end");
 
@@ -406,6 +424,7 @@ const startGame = () => {
   showScreen("game");
   resetGameState();
 
+  state.gameActive = true;
   state.selectedPack = packs[getSelectedPackId()];
   state.pool = getCountryPool();
   state.audioEnabled = state.audioAllowed;
@@ -438,6 +457,7 @@ elements.startButton.addEventListener("click", () => {
 });
 
 elements.exitButton.addEventListener("click", () => {
+  state.gameActive = false; // Stop any pending async operations
   stopAudio();
   showScreen("start");
 });

@@ -10,7 +10,6 @@ const countries = [
     { code: "au", name: "Australia", continent: "Oceania", population: 27536874, area: 7692024, gdp: 1830000, population_rank: 54, area_rank: 6, gdp_rank: 15, rank: 6 },
     { code: "at", name: "Austria", continent: "Europe", population: 9200931, area: 83871, gdp: 516000, population_rank: 97, area_rank: 112, gdp_rank: 29, rank: 29 },
     { code: "az", name: "Azerbaijan", continent: "Asia", population: 10241722, area: 86600, gdp: 78000, population_rank: 92, area_rank: 111, gdp_rank: 78, rank: 78 },
-
     { code: "bs", name: "Bahamas", continent: "North America", population: 398165, area: 13943, gdp: 14000, population_rank: 170, area_rank: 155, gdp_rank: 138, rank: 138 },
     { code: "bh", name: "Bahrain", continent: "Asia", population: 1594654, area: 765, gdp: 44000, population_rank: 149, area_rank: 172, gdp_rank: 95, rank: 95 },
     { code: "bd", name: "Bangladesh", continent: "Asia", population: 169828911, area: 147570, gdp: 446000, population_rank: 8, area_rank: 92, gdp_rank: 35, rank: 8 },
@@ -28,8 +27,7 @@ const countries = [
     { code: "bg", name: "Bulgaria", continent: "Europe", population: 6437360, area: 110879, gdp: 103000, population_rank: 109, area_rank: 103, gdp_rank: 66, rank: 66 },
     { code: "bf", name: "Burkina Faso", continent: "Africa", population: 24070553, area: 272967, gdp: 20000, population_rank: 58, area_rank: 74, gdp_rank: 120, rank: 58 },
     { code: "bi", name: "Burundi", continent: "Africa", population: 12332788, area: 27834, gdp: 3000, population_rank: 78, area_rank: 142, gdp_rank: 166, rank: 78 },
-
-    { code: "cv", name: "Cabo Verde", continent: "Africa", population: 491233, area: 4033, gdp: 2000, population_rank: 167, area_rank: 165, gdp_rank: 173, rank: 165 },
+    { code: "cv", name: "Cape Verde", continent: "Africa", population: 491233, area: 4033, gdp: 2000, population_rank: 167, area_rank: 165, gdp_rank: 173, rank: 165 },
     { code: "kh", name: "Cambodia", continent: "Asia", population: 17577760, area: 181035, gdp: 32000, population_rank: 72, area_rank: 88, gdp_rank: 101, rank: 72 },
     { code: "cm", name: "Cameroon", continent: "Africa", population: 29442327, area: 475442, gdp: 47000, population_rank: 52, area_rank: 53, gdp_rank: 91, rank: 52 },
     { code: "ca", name: "Canada", continent: "North America", population: 41651653, area: 9984670, gdp: 2280000, population_rank: 37, area_rank: 2, gdp_rank: 10, rank: 2 },
@@ -39,21 +37,18 @@ const countries = [
     { code: "cn", name: "China", continent: "Asia", population: 1408280000, area: 9706961, gdp: 19400000, population_rank: 2, area_rank: 3, gdp_rank: 2, rank: 2 },
     { code: "co", name: "Colombia", continent: "South America", population: 53057212, area: 1141748, gdp: 343000, population_rank: 27, area_rank: 25, gdp_rank: 43, rank: 25 },
     { code: "km", name: "Comoros", continent: "Africa", population: 919901, area: 1862, gdp: 1400, population_rank: 157, area_rank: 169, gdp_rank: 179, rank: 157 },
-    { code: "cg", name: "Congo", continent: "Africa", population: 6142180, area: 342000, gdp: 14000, population_rank: 110, area_rank: 65, gdp_rank: 139, rank: 65 },
+    { code: "cg", name: "Republic of the Congo", continent: "Africa", population: 6142180, area: 342000, gdp: 14000, population_rank: 110, area_rank: 65, gdp_rank: 139, rank: 65 },
     { code: "cr", name: "Costa Rica", continent: "North America", population: 5309625, area: 51100, gdp: 71000, population_rank: 122, area_rank: 126, gdp_rank: 84, rank: 84 },
-    { code: "ci", name: "Côte d'Ivoire", continent: "Africa", population: 31719275, area: 322463, gdp: 79000, population_rank: 50, area_rank: 69, gdp_rank: 77, rank: 50 },
+    { code: "ci", name: "Ivory Coast", continent: "Africa", population: 31719275, area: 322463, gdp: 79000, population_rank: 50, area_rank: 69, gdp_rank: 77, rank: 50 },
     { code: "hr", name: "Croatia", continent: "Europe", population: 3866233, area: 56594, gdp: 82000, population_rank: 128, area_rank: 124, gdp_rank: 74, rank: 74 },
     { code: "cu", name: "Cuba", continent: "North America", population: 9748007, area: 109884, gdp: 202000, population_rank: 95, area_rank: 104, gdp_rank: 56, rank: 56 },
     { code: "cy", name: "Cyprus", continent: "Europe", population: 1442614, area: 9251, gdp: 32000, population_rank: 150, area_rank: 162, gdp_rank: 102, rank: 102 },
     { code: "cz", name: "Czechia", continent: "Europe", population: 10882341, area: 78865, gdp: 330000, population_rank: 86, area_rank: 114, gdp_rank: 44, rank: 44 },
-
-
     { code: "cd", name: "DR Congo", continent: "Africa", population: 112832000, area: 2344858, gdp: 66000, population_rank: 13, area_rank: 11, gdp_rank: 86, rank: 11 },
     { code: "dk", name: "Denmark", continent: "Europe", population: 6011488, area: 43094, gdp: 406000, population_rank: 114, area_rank: 130, gdp_rank: 37, rank: 37 },
     { code: "dj", name: "Djibouti", continent: "Africa", population: 1066809, area: 23200, gdp: 4000, population_rank: 156, area_rank: 146, gdp_rank: 161, rank: 146 },
     { code: "dm", name: "Dominica", continent: "North America", population: 67408, area: 751, gdp: 700, population_rank: 185, area_rank: 173, gdp_rank: 185, rank: 173 },
     { code: "do", name: "Dominican Republic", continent: "North America", population: 10771504, area: 48671, gdp: 121000, population_rank: 87, area_rank: 128, gdp_rank: 62, rank: 62 },
-
     { code: "ec", name: "Ecuador", continent: "South America", population: 18103660, area: 276841, gdp: 118000, population_rank: 69, area_rank: 73, gdp_rank: 63, rank: 63 },
     { code: "eg", name: "Egypt", continent: "Africa", population: 107271260, area: 1002450, gdp: 347000, population_rank: 15, area_rank: 29, gdp_rank: 42, rank: 15 },
     { code: "sv", name: "El Salvador", continent: "North America", population: 6029976, area: 21041, gdp: 34000, population_rank: 113, area_rank: 149, gdp_rank: 99, rank: 99 },
@@ -62,11 +57,9 @@ const countries = [
     { code: "ee", name: "Estonia", continent: "Europe", population: 1369995, area: 45227, gdp: 43000, population_rank: 152, area_rank: 129, gdp_rank: 97, rank: 97 },
     { code: "sz", name: "Eswatini", continent: "Africa", population: 1235549, area: 17364, gdp: 5000, population_rank: 155, area_rank: 153, gdp_rank: 156, rank: 153 },
     { code: "et", name: "Ethiopia", continent: "Africa", population: 111652998, area: 1104300, gdp: 156000, population_rank: 14, area_rank: 26, gdp_rank: 59, rank: 14 },
-
     { code: "fj", name: "Fiji", continent: "Oceania", population: 900869, area: 18272, gdp: 5000, population_rank: 158, area_rank: 151, gdp_rank: 157, rank: 151 },
     { code: "fi", name: "Finland", continent: "Europe", population: 5650325, area: 338455, gdp: 305000, population_rank: 115, area_rank: 66, gdp_rank: 46, rank: 46 },
     { code: "fr", name: "France", continent: "Europe", population: 66351959, area: 543908, gdp: 3360000, population_rank: 22, area_rank: 48, gdp_rank: 7, rank: 7 },
-
     { code: "ga", name: "Gabon", continent: "Africa", population: 2469296, area: 267668, gdp: 21000, population_rank: 139, area_rank: 76, gdp_rank: 114, rank: 76 },
     { code: "gm", name: "Gambia", continent: "Africa", population: 2422712, area: 10689, gdp: 2400, population_rank: 140, area_rank: 160, gdp_rank: 171, rank: 140 },
     { code: "ge", name: "Georgia", continent: "Asia", population: 4000921, area: 69700, gdp: 28000, population_rank: 127, area_rank: 119, gdp_rank: 108, rank: 108 },
@@ -76,13 +69,11 @@ const countries = [
     { code: "gd", name: "Grenada", continent: "North America", population: 109021, area: 344, gdp: 1300, population_rank: 180, area_rank: 184, gdp_rank: 180, rank: 180 },
     { code: "gt", name: "Guatemala", continent: "North America", population: 18079810, area: 108889, gdp: 102000, population_rank: 71, area_rank: 105, gdp_rank: 67, rank: 67 },
     { code: "gn", name: "Guinea", continent: "Africa", population: 14363931, area: 245857, gdp: 21000, population_rank: 75, area_rank: 77, gdp_rank: 115, rank: 75 },
-    { code: "gw", name: "Guinea Bissau", continent: "Africa", population: 1781308, area: 36125, gdp: 2000, population_rank: 147, area_rank: 134, gdp_rank: 175, rank: 134 },
+    { code: "gw", name: "Guinea-Bissau", continent: "Africa", population: 1781308, area: 36125, gdp: 2000, population_rank: 147, area_rank: 134, gdp_rank: 175, rank: 134 },
     { code: "gy", name: "Guyana", continent: "South America", population: 772975, area: 214969, gdp: 15000, population_rank: 160, area_rank: 83, gdp_rank: 133, rank: 83 },
-
     { code: "ht", name: "Haiti", continent: "North America", population: 11867032, area: 27750, gdp: 20000, population_rank: 80, area_rank: 143, gdp_rank: 121, rank: 80 },
     { code: "hn", name: "Honduras", continent: "North America", population: 9892632, area: 112492, gdp: 34000, population_rank: 94, area_rank: 101, gdp_rank: 100, rank: 94 },
     { code: "hu", name: "Hungary", continent: "Europe", population: 9539502, area: 93028, gdp: 212000, population_rank: 96, area_rank: 108, gdp_rank: 55, rank: 55 },
-
     { code: "is", name: "Iceland", continent: "Europe", population: 391810, area: 103000, gdp: 31000, population_rank: 171, area_rank: 106, gdp_rank: 104, rank: 104 },
     { code: "in", name: "India", continent: "Asia", population: 1417492000, area: 3287263, gdp: 4130000, population_rank: 1, area_rank: 7, gdp_rank: 5, rank: 1 },
     { code: "id", name: "Indonesia", continent: "Asia", population: 284438782, area: 1904569, gdp: 1470000, population_rank: 4, area_rank: 14, gdp_rank: 16, rank: 4 },
@@ -91,17 +82,14 @@ const countries = [
     { code: "ie", name: "Ireland", continent: "Europe", population: 5458600, area: 70273, gdp: 545000, population_rank: 118, area_rank: 118, gdp_rank: 26, rank: 26 },
     { code: "il", name: "Israel", continent: "Asia", population: 10134800, area: 21937, gdp: 530000, population_rank: 93, area_rank: 148, gdp_rank: 27, rank: 27 },
     { code: "it", name: "Italy", continent: "Europe", population: 58927633, area: 301336, gdp: 2540000, population_rank: 25, area_rank: 72, gdp_rank: 8, rank: 8 },
-
     { code: "jm", name: "Jamaica", continent: "North America", population: 2825544, area: 10991, gdp: 19000, population_rank: 137, area_rank: 159, gdp_rank: 124, rank: 124 },
     { code: "jp", name: "Japan", continent: "Asia", population: 123210000, area: 377930, gdp: 4280000, population_rank: 11, area_rank: 62, gdp_rank: 4, rank: 4 },
     { code: "jo", name: "Jordan", continent: "Asia", population: 11734000, area: 89342, gdp: 50000, population_rank: 83, area_rank: 110, gdp_rank: 88, rank: 83 },
-
     { code: "kz", name: "Kazakhstan", continent: "Asia", population: 20426568, area: 2724900, gdp: 261000, population_rank: 62, area_rank: 9, gdp_rank: 50, rank: 9 },
     { code: "ke", name: "Kenya", continent: "Africa", population: 53330978, area: 580367, gdp: 104000, population_rank: 26, area_rank: 47, gdp_rank: 65, rank: 26 },
     { code: "ki", name: "Kiribati", continent: "Oceania", population: 120740, area: 811, gdp: 300, population_rank: 178, area_rank: 171, gdp_rank: 189, rank: 171 },
     { code: "kw", name: "Kuwait", continent: "Asia", population: 4881254, area: 17818, gdp: 165000, population_rank: 125, area_rank: 152, gdp_rank: 58, rank: 58 },
     { code: "kg", name: "Kyrgyzstan", continent: "Asia", population: 7281800, area: 199951, gdp: 12000, population_rank: 104, area_rank: 85, gdp_rank: 145, rank: 85 },
-
     { code: "la", name: "Laos", continent: "Asia", population: 7647000, area: 236800, gdp: 15000, population_rank: 102, area_rank: 82, gdp_rank: 134, rank: 82 },
     { code: "lv", name: "Latvia", continent: "Europe", population: 1829000, area: 64559, gdp: 47000, population_rank: 145, area_rank: 122, gdp_rank: 92, rank: 92 },
     { code: "lb", name: "Lebanon", continent: "Asia", population: 5490000, area: 10452, gdp: 18000, population_rank: 117, area_rank: 161, gdp_rank: 126, rank: 117 },
@@ -111,7 +99,6 @@ const countries = [
     { code: "li", name: "Liechtenstein", continent: "Europe", population: 40900, area: 160, gdp: 7000, population_rank: 188, area_rank: 189, gdp_rank: 152, rank: 152 },
     { code: "lt", name: "Lithuania", continent: "Europe", population: 2894886, area: 65300, gdp: 80000, population_rank: 136, area_rank: 121, gdp_rank: 76, rank: 76 },
     { code: "lu", name: "Luxembourg", continent: "Europe", population: 681973, area: 2586, gdp: 89000, population_rank: 162, area_rank: 167, gdp_rank: 71, rank: 71 },
-
     { code: "mg", name: "Madagascar", continent: "Africa", population: 31727042, area: 587041, gdp: 16000, population_rank: 49, area_rank: 45, gdp_rank: 130, rank: 45 },
     { code: "mw", name: "Malawi", continent: "Africa", population: 20734262, area: 118484, gdp: 13000, population_rank: 61, area_rank: 98, gdp_rank: 141, rank: 61 },
     { code: "my", name: "Malaysia", continent: "Asia", population: 34231700, area: 330803, gdp: 447000, population_rank: 44, area_rank: 68, gdp_rank: 34, rank: 34 },
@@ -130,8 +117,6 @@ const countries = [
     { code: "ma", name: "Morocco", continent: "Africa", population: 36828330, area: 446550, gdp: 152000, population_rank: 40, area_rank: 57, gdp_rank: 60, rank: 40 },
     { code: "mz", name: "Mozambique", continent: "Africa", population: 34090466, area: 801590, gdp: 21000, population_rank: 45, area_rank: 34, gdp_rank: 117, rank: 34 },
     { code: "mm", name: "Myanmar", continent: "Asia", population: 51316756, area: 676578, gdp: 59000, population_rank: 29, area_rank: 39, gdp_rank: 87, rank: 29 },
-
-
     { code: "na", name: "Namibia", continent: "Africa", population: 3022401, area: 825615, gdp: 13000, population_rank: 135, area_rank: 33, gdp_rank: 142, rank: 33 },
     { code: "nr", name: "Nauru", continent: "Oceania", population: 11680, area: 21, gdp: 200, population_rank: 192, area_rank: 192, gdp_rank: 192, rank: 192 },
     { code: "np", name: "Nepal", continent: "Asia", population: 29911840, area: 147181, gdp: 40000, population_rank: 51, area_rank: 93, gdp_rank: 98, rank: 51 },
@@ -143,9 +128,7 @@ const countries = [
     { code: "kp", name: "North Korea", continent: "Asia", population: 25950000, area: 120538, gdp: 18000, population_rank: 56, area_rank: 97, gdp_rank: 127, rank: 56 },
     { code: "mk", name: "North Macedonia", continent: "Europe", population: 1822612, area: 25713, gdp: 15000, population_rank: 146, area_rank: 145, gdp_rank: 136, rank: 136 },
     { code: "no", name: "Norway", continent: "Europe", population: 5606944, area: 386224, gdp: 526000, population_rank: 116, area_rank: 61, gdp_rank: 28, rank: 28 },
-
     { code: "om", name: "Oman", continent: "Asia", population: 5343630, area: 309500, gdp: 115000, population_rank: 120, area_rank: 71, gdp_rank: 64, rank: 64 },
-
     { code: "pk", name: "Pakistan", continent: "Asia", population: 241499431, area: 796095, gdp: 374000, population_rank: 5, area_rank: 35, gdp_rank: 39, rank: 5 },
     { code: "pw", name: "Palau", continent: "Oceania", population: 16733, area: 459, gdp: 300, population_rank: 191, area_rank: 179, gdp_rank: 191, rank: 179 },
     { code: "pa", name: "Panama", continent: "North America", population: 4064780, area: 75417, gdp: 83000, population_rank: 126, area_rank: 116, gdp_rank: 73, rank: 73 },
@@ -155,19 +138,16 @@ const countries = [
     { code: "ph", name: "Philippines", continent: "Asia", population: 114123600, area: 342353, gdp: 435000, population_rank: 12, area_rank: 64, gdp_rank: 36, rank: 12 },
     { code: "pl", name: "Poland", continent: "Europe", population: 37392000, area: 312679, gdp: 842000, population_rank: 39, area_rank: 70, gdp_rank: 21, rank: 21 },
     { code: "pt", name: "Portugal", continent: "Europe", population: 10749635, area: 92090, gdp: 287000, population_rank: 88, area_rank: 109, gdp_rank: 47, rank: 47 },
-
     { code: "qa", name: "Qatar", continent: "Asia", population: 3173024, area: 11586, gdp: 220000, population_rank: 133, area_rank: 158, gdp_rank: 54, rank: 54 },
-
     { code: "ro", name: "Romania", continent: "Europe", population: 19036031, area: 238391, gdp: 351000, population_rank: 67, area_rank: 81, gdp_rank: 41, rank: 41 },
     { code: "ru", name: "Russia", continent: "Europe", population: 146028325, area: 17098246, gdp: 2540000, population_rank: 9, area_rank: 1, gdp_rank: 9, rank: 1 },
     { code: "rw", name: "Rwanda", continent: "Africa", population: 14104969, area: 26338, gdp: 14000, population_rank: 76, area_rank: 144, gdp_rank: 140, rank: 76 },
-
     { code: "kn", name: "Saint Kitts and Nevis", continent: "North America", population: 51320, area: 261, gdp: 1200, population_rank: 186, area_rank: 187, gdp_rank: 181, rank: 181 },
     { code: "lc", name: "Saint Lucia", continent: "North America", population: 184100, area: 616, gdp: 2500, population_rank: 176, area_rank: 177, gdp_rank: 170, rank: 170 },
     { code: "vc", name: "Saint Vincent and the Grenadines", continent: "North America", population: 110872, area: 389, gdp: 1100, population_rank: 179, area_rank: 183, gdp_rank: 182, rank: 179 },
     { code: "ws", name: "Samoa", continent: "Oceania", population: 205557, area: 2842, gdp: 900, population_rank: 175, area_rank: 166, gdp_rank: 184, rank: 166 },
     { code: "sm", name: "San Marino", continent: "Europe", population: 34132, area: 61, gdp: 2000, population_rank: 190, area_rank: 190, gdp_rank: 176, rank: 176 },
-    { code: "st", name: "Sao Tome and Principe", continent: "Africa", population: 209607, area: 964, gdp: 700, population_rank: 174, area_rank: 170, gdp_rank: 186, rank: 170 },
+    { code: "st", name: "São Tomé and Príncipe", continent: "Africa", population: 209607, area: 964, gdp: 700, population_rank: 174, area_rank: 170, gdp_rank: 186, rank: 170 },
     { code: "sa", name: "Saudi Arabia", continent: "Asia", population: 35300280, area: 2149690, gdp: 1100000, population_rank: 42, area_rank: 12, gdp_rank: 19, rank: 12 },
     { code: "sn", name: "Senegal", continent: "Africa", population: 18593258, area: 196722, gdp: 28000, population_rank: 68, area_rank: 86, gdp_rank: 109, rank: 68 },
     { code: "rs", name: "Serbia", continent: "Europe", population: 6567783, area: 77589, gdp: 75000, population_rank: 107, area_rank: 115, gdp_rank: 81, rank: 81 },
@@ -188,7 +168,6 @@ const countries = [
     { code: "se", name: "Sweden", continent: "Europe", population: 10605098, area: 450295, gdp: 599000, population_rank: 89, area_rank: 55, gdp_rank: 24, rank: 24 },
     { code: "ch", name: "Switzerland", continent: "Europe", population: 9082848, area: 41284, gdp: 906000, population_rank: 99, area_rank: 132, gdp_rank: 20, rank: 20 },
     { code: "sy", name: "Syria", continent: "Asia", population: 25620000, area: 185180, gdp: 9000, population_rank: 57, area_rank: 87, gdp_rank: 149, rank: 57 },
-
     { code: "tj", name: "Tajikistan", continent: "Asia", population: 10499000, area: 143100, gdp: 12000, population_rank: 90, area_rank: 94, gdp_rank: 146, rank: 90 },
     { code: "tz", name: "Tanzania", continent: "Africa", population: 68153004, area: 947303, gdp: 85000, population_rank: 21, area_rank: 30, gdp_rank: 72, rank: 21 },
     { code: "th", name: "Thailand", continent: "Asia", population: 65859640, area: 513120, gdp: 548000, population_rank: 23, area_rank: 50, gdp_rank: 25, rank: 23 },
@@ -200,7 +179,6 @@ const countries = [
     { code: "tr", name: "Turkey", continent: "Asia", population: 85664944, area: 783562, gdp: 1340000, population_rank: 18, area_rank: 36, gdp_rank: 17, rank: 17 },
     { code: "tm", name: "Turkmenistan", continent: "Asia", population: 7057841, area: 488100, gdp: 82000, population_rank: 105, area_rank: 52, gdp_rank: 75, rank: 52 },
     { code: "tv", name: "Tuvalu", continent: "Oceania", population: 10643, area: 26, gdp: 60, population_rank: 193, area_rank: 191, gdp_rank: 193, rank: 191 },
-
     { code: "ug", name: "Uganda", continent: "Africa", population: 45905417, area: 241550, gdp: 50000, population_rank: 35, area_rank: 79, gdp_rank: 89, rank: 35 },
     { code: "ua", name: "Ukraine", continent: "Europe", population: 32862000, area: 603550, gdp: 178000, population_rank: 47, area_rank: 44, gdp_rank: 57, rank: 44 },
     { code: "ae", name: "United Arab Emirates", continent: "Asia", population: 11294243, area: 83600, gdp: 499000, population_rank: 85, area_rank: 113, gdp_rank: 31, rank: 31 },
@@ -208,66 +186,10 @@ const countries = [
     { code: "us", name: "United States", continent: "North America", population: 340110988, area: 9525067, gdp: 30620000, population_rank: 3, area_rank: 4, gdp_rank: 1, rank: 1 },
     { code: "uy", name: "Uruguay", continent: "South America", population: 3499451, area: 181034, gdp: 77000, population_rank: 131, area_rank: 89, gdp_rank: 79, rank: 79 },
     { code: "uz", name: "Uzbekistan", continent: "Asia", population: 37859698, area: 447400, gdp: 90000, population_rank: 38, area_rank: 56, gdp_rank: 70, rank: 38 },
-
     { code: "vu", name: "Vanuatu", continent: "Oceania", population: 321409, area: 12189, gdp: 1100, population_rank: 172, area_rank: 157, gdp_rank: 183, rank: 157 },
     { code: "ve", name: "Venezuela", continent: "South America", population: 28517000, area: 916445, gdp: 98000, population_rank: 53, area_rank: 32, gdp_rank: 68, rank: 32 },
     { code: "vn", name: "Vietnam", continent: "Asia", population: 101343800, area: 331212, gdp: 449000, population_rank: 16, area_rank: 67, gdp_rank: 33, rank: 16 },
-
     { code: "ye", name: "Yemen", continent: "Asia", population: 32684503, area: 527968, gdp: 21000, population_rank: 48, area_rank: 49, gdp_rank: 118, rank: 48 },
-
     { code: "zm", name: "Zambia", continent: "Africa", population: 19693423, area: 752612, gdp: 29000, population_rank: 64, area_rank: 38, gdp_rank: 106, rank: 38 },
     { code: "zw", name: "Zimbabwe", continent: "Africa", population: 17073087, area: 390757, gdp: 28000, population_rank: 73, area_rank: 60, gdp_rank: 111, rank: 60 }
 ];
-
-const packs = {
-  world: {
-    name: "World Top 20",
-    codes: ["in", "ru", "us", "ca", "cn", "de", "id", "jp", "br", "pk", "au", "ng", "gb", "fr", "ar", "bd", "it", "kz", "dz", "mx"]
-  },
-  africa: {
-    name: "Africa Top 20",
-    codes: ["ng", "dz", "cd", "et", "eg", "sd", "ly", "td", "ne", "tz", "ao", "ml", "za", "ke", "mr", "na", "mz", "ug", "zm", "ma"]
-  },
-  asia: {
-    name: "Asia Top 21",
-    codes: ["in", "cn", "id", "jp", "pk", "bd", "kz", "ph", "sa", "kr", "vn", "ir", "tr", "mn", "th", "il", "mm", "sg", "ae", "iq", "my"]
-  },
-  europe: {
-    name: "Europe Top 20",
-    codes: ["ru", "de", "gb", "fr", "it", "es", "nl", "ch", "pl", "be", "se", "ie", "no", "at", "dk", "ro", "cz", "ua", "fi", "pt"]
-  },
-  northAmerica: {
-    name: "North America",
-    codes: ["us", "ca", "mx", "cu", "do", "gt", "pa", "ht", "cr", "hn", "ni", "sv", "tt", "jm", "bs", "bz", "bb", "lc", "ag", "dm", "vc", "gd", "kn"]
-  },
-  oceania: {
-    name: "Oceania",
-    codes: ["au", "nz", "pg", "sb", "fj", "vu", "ws", "ki", "to", "fm", "pw", "mh", "tv", "nr"]
-  },
-  southAmerica: {
-    name: "South America",
-    codes: ["br", "ar", "pe", "co", "bo", "ve", "cl", "py", "ec", "uy", "gy", "sr"]
-  },
-  worldFull: {
-    name: "All World",
-    codes: [] // Will be populated dynamically
-  },
-  europeFull: {
-    name: "All Europe",
-    codes: [] // Will be populated dynamically
-  },
-  asiaFull: {
-    name: "All Asia",
-    codes: [] // Will be populated dynamically
-  },
-  africaFull: {
-    name: "All Africa",
-    codes: [] // Will be populated dynamically
-  }
-};
-
-// Populate dynamic packs
-packs.worldFull.codes = countries.map(c => c.code);
-packs.europeFull.codes = countries.filter(c => c.continent === "Europe").map(c => c.code);
-packs.asiaFull.codes = countries.filter(c => c.continent === "Asia").map(c => c.code);
-packs.africaFull.codes = countries.filter(c => c.continent === "Africa").map(c => c.code);

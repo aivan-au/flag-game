@@ -65,6 +65,11 @@ def parse_args():
         action="store_true",
         help="Regenerate files even if they already exist.",
     )
+    parser.add_argument(
+        "--codes",
+        nargs="+",
+        help="Specific country codes to generate (e.g., --codes cu kw). If omitted, generates for all pack codes.",
+    )
     return parser.parse_args()
 
 
@@ -96,25 +101,33 @@ def main():
         "ELEVEN_LABS_MODEL_ID", "eleven_multilingual_v2"
     )
 
-    pack_codes = extract_pack_codes(root / "countries.js")
+    # Use specific codes if provided, otherwise extract from packs
+    if args.codes:
+        codes_to_generate = args.codes
+    else:
+        codes_to_generate = extract_pack_codes(root / "countries.js")
+
     country_names = fetch_country_names()
 
     audio_dir = root / "assets" / "audio" / voice_id
     audio_dir.mkdir(parents=True, exist_ok=True)
 
     created = 0
-    for filename, phrase in build_phrase_list():
-        if synthesize(
-            phrase,
-            audio_dir / filename,
-            api_key,
-            voice_id,
-            model_id,
-            force=args.force,
-        ):
-            created += 1
 
-    for code in pack_codes:
+    # Only generate phrase files if not using specific codes
+    if not args.codes:
+        for filename, phrase in build_phrase_list():
+            if synthesize(
+                phrase,
+                audio_dir / filename,
+                api_key,
+                voice_id,
+                model_id,
+                force=args.force,
+            ):
+                created += 1
+
+    for code in codes_to_generate:
         name = country_names.get(code)
         if not name:
             continue

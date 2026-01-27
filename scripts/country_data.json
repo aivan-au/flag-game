@@ -1,0 +1,1546 @@
+[
+  {
+    "code": "af",
+    "name": "Afghanistan",
+    "continent": "Asia",
+    "population": 43844000,
+    "area": 652230,
+    "gdp": 14000
+  },
+  {
+    "code": "al",
+    "name": "Albania",
+    "continent": "Europe",
+    "population": 2363314,
+    "area": 28748,
+    "gdp": 23000
+  },
+  {
+    "code": "dz",
+    "name": "Algeria",
+    "continent": "Africa",
+    "population": 47400000,
+    "area": 2381741,
+    "gdp": 239000
+  },
+  {
+    "code": "ad",
+    "name": "Andorra",
+    "continent": "Europe",
+    "population": 88406,
+    "area": 468,
+    "gdp": 4000
+  },
+  {
+    "code": "ao",
+    "name": "Angola",
+    "continent": "Africa",
+    "population": 36170961,
+    "area": 1246700,
+    "gdp": 92000
+  },
+  {
+    "code": "ag",
+    "name": "Antigua and Barbuda",
+    "continent": "North America",
+    "population": 103603,
+    "area": 442,
+    "gdp": 2000
+  },
+  {
+    "code": "ar",
+    "name": "Argentina",
+    "continent": "South America",
+    "population": 46735004,
+    "area": 2780400,
+    "gdp": 621000
+  },
+  {
+    "code": "am",
+    "name": "Armenia",
+    "continent": "Asia",
+    "population": 3076200,
+    "area": 29743,
+    "gdp": 26000
+  },
+  {
+    "code": "au",
+    "name": "Australia",
+    "continent": "Oceania",
+    "population": 27536874,
+    "area": 7692024,
+    "gdp": 1830000
+  },
+  {
+    "code": "at",
+    "name": "Austria",
+    "continent": "Europe",
+    "population": 9200931,
+    "area": 83871,
+    "gdp": 516000
+  },
+  {
+    "code": "az",
+    "name": "Azerbaijan",
+    "continent": "Asia",
+    "population": 10241722,
+    "area": 86600,
+    "gdp": 78000
+  },
+  {
+    "code": "bs",
+    "name": "Bahamas",
+    "continent": "North America",
+    "population": 398165,
+    "area": 13943,
+    "gdp": 14000
+  },
+  {
+    "code": "bh",
+    "name": "Bahrain",
+    "continent": "Asia",
+    "population": 1594654,
+    "area": 765,
+    "gdp": 44000
+  },
+  {
+    "code": "bd",
+    "name": "Bangladesh",
+    "continent": "Asia",
+    "population": 169828911,
+    "area": 147570,
+    "gdp": 446000
+  },
+  {
+    "code": "bb",
+    "name": "Barbados",
+    "continent": "North America",
+    "population": 267800,
+    "area": 430,
+    "gdp": 6000
+  },
+  {
+    "code": "by",
+    "name": "Belarus",
+    "continent": "Europe",
+    "population": 9109280,
+    "area": 207600,
+    "gdp": 73000
+  },
+  {
+    "code": "be",
+    "name": "Belgium",
+    "continent": "Europe",
+    "population": 11825551,
+    "area": 30528,
+    "gdp": 632000
+  },
+  {
+    "code": "bz",
+    "name": "Belize",
+    "continent": "North America",
+    "population": 417634,
+    "area": 22966,
+    "gdp": 3000
+  },
+  {
+    "code": "bj",
+    "name": "Benin",
+    "continent": "Africa",
+    "population": 13224860,
+    "area": 112622,
+    "gdp": 19000
+  },
+  {
+    "code": "bt",
+    "name": "Bhutan",
+    "continent": "Asia",
+    "population": 784043,
+    "area": 38394,
+    "gdp": 3000
+  },
+  {
+    "code": "bo",
+    "name": "Bolivia",
+    "continent": "South America",
+    "population": 11365333,
+    "area": 1098581,
+    "gdp": 45000
+  },
+  {
+    "code": "ba",
+    "name": "Bosnia and Herzegovina",
+    "continent": "Europe",
+    "population": 3422000,
+    "area": 51209,
+    "gdp": 28000
+  },
+  {
+    "code": "bw",
+    "name": "Botswana",
+    "continent": "Africa",
+    "population": 2359609,
+    "area": 582000,
+    "gdp": 20000
+  },
+  {
+    "code": "br",
+    "name": "Brazil",
+    "continent": "South America",
+    "population": 213421037,
+    "area": 8515767,
+    "gdp": 2260000
+  },
+  {
+    "code": "bn",
+    "name": "Brunei",
+    "continent": "Asia",
+    "population": 455500,
+    "area": 5765,
+    "gdp": 15000
+  },
+  {
+    "code": "bg",
+    "name": "Bulgaria",
+    "continent": "Europe",
+    "population": 6437360,
+    "area": 110879,
+    "gdp": 103000
+  },
+  {
+    "code": "bf",
+    "name": "Burkina Faso",
+    "continent": "Africa",
+    "population": 24070553,
+    "area": 272967,
+    "gdp": 20000
+  },
+  {
+    "code": "bi",
+    "name": "Burundi",
+    "continent": "Africa",
+    "population": 12332788,
+    "area": 27834,
+    "gdp": 3000
+  },
+  {
+    "code": "cv",
+    "name": "Cape Verde",
+    "continent": "Africa",
+    "population": 491233,
+    "area": 4033,
+    "gdp": 2000
+  },
+  {
+    "code": "kh",
+    "name": "Cambodia",
+    "continent": "Asia",
+    "population": 17577760,
+    "area": 181035,
+    "gdp": 32000
+  },
+  {
+    "code": "cm",
+    "name": "Cameroon",
+    "continent": "Africa",
+    "population": 29442327,
+    "area": 475442,
+    "gdp": 47000
+  },
+  {
+    "code": "ca",
+    "name": "Canada",
+    "continent": "North America",
+    "population": 41651653,
+    "area": 9984670,
+    "gdp": 2280000
+  },
+  {
+    "code": "cf",
+    "name": "Central African Republic",
+    "continent": "Africa",
+    "population": 6470307,
+    "area": 622984,
+    "gdp": 3000
+  },
+  {
+    "code": "td",
+    "name": "Chad",
+    "continent": "Africa",
+    "population": 19340757,
+    "area": 1284000,
+    "gdp": 12000
+  },
+  {
+    "code": "cl",
+    "name": "Chile",
+    "continent": "South America",
+    "population": 20206953,
+    "area": 756102,
+    "gdp": 317000
+  },
+  {
+    "code": "cn",
+    "name": "China",
+    "continent": "Asia",
+    "population": 1408280000,
+    "area": 9706961,
+    "gdp": 19400000
+  },
+  {
+    "code": "co",
+    "name": "Colombia",
+    "continent": "South America",
+    "population": 53057212,
+    "area": 1141748,
+    "gdp": 343000
+  },
+  {
+    "code": "km",
+    "name": "Comoros",
+    "continent": "Africa",
+    "population": 919901,
+    "area": 1862,
+    "gdp": 1400
+  },
+  {
+    "code": "cg",
+    "name": "Republic of the Congo",
+    "continent": "Africa",
+    "population": 6142180,
+    "area": 342000,
+    "gdp": 14000
+  },
+  {
+    "code": "cr",
+    "name": "Costa Rica",
+    "continent": "North America",
+    "population": 5309625,
+    "area": 51100,
+    "gdp": 71000
+  },
+  {
+    "code": "ci",
+    "name": "Ivory Coast",
+    "continent": "Africa",
+    "population": 31719275,
+    "area": 322463,
+    "gdp": 79000
+  },
+  {
+    "code": "hr",
+    "name": "Croatia",
+    "continent": "Europe",
+    "population": 3866233,
+    "area": 56594,
+    "gdp": 82000
+  },
+  {
+    "code": "cu",
+    "name": "Cuba",
+    "continent": "North America",
+    "population": 9748007,
+    "area": 109884,
+    "gdp": 202000
+  },
+  {
+    "code": "cy",
+    "name": "Cyprus",
+    "continent": "Europe",
+    "population": 1442614,
+    "area": 9251,
+    "gdp": 32000
+  },
+  {
+    "code": "cz",
+    "name": "Czechia",
+    "continent": "Europe",
+    "population": 10882341,
+    "area": 78865,
+    "gdp": 330000
+  },
+  {
+    "code": "cd",
+    "name": "DR Congo",
+    "continent": "Africa",
+    "population": 112832000,
+    "area": 2344858,
+    "gdp": 66000
+  },
+  {
+    "code": "dk",
+    "name": "Denmark",
+    "continent": "Europe",
+    "population": 6011488,
+    "area": 43094,
+    "gdp": 406000
+  },
+  {
+    "code": "dj",
+    "name": "Djibouti",
+    "continent": "Africa",
+    "population": 1066809,
+    "area": 23200,
+    "gdp": 4000
+  },
+  {
+    "code": "dm",
+    "name": "Dominica",
+    "continent": "North America",
+    "population": 67408,
+    "area": 751,
+    "gdp": 700
+  },
+  {
+    "code": "do",
+    "name": "Dominican Republic",
+    "continent": "North America",
+    "population": 10771504,
+    "area": 48671,
+    "gdp": 121000
+  },
+  {
+    "code": "ec",
+    "name": "Ecuador",
+    "continent": "South America",
+    "population": 18103660,
+    "area": 276841,
+    "gdp": 118000
+  },
+  {
+    "code": "eg",
+    "name": "Egypt",
+    "continent": "Africa",
+    "population": 107271260,
+    "area": 1002450,
+    "gdp": 347000
+  },
+  {
+    "code": "sv",
+    "name": "El Salvador",
+    "continent": "North America",
+    "population": 6029976,
+    "area": 21041,
+    "gdp": 34000
+  },
+  {
+    "code": "gq",
+    "name": "Equatorial Guinea",
+    "continent": "Africa",
+    "population": 1668768,
+    "area": 28051,
+    "gdp": 12000
+  },
+  {
+    "code": "er",
+    "name": "Eritrea",
+    "continent": "Africa",
+    "population": 3607000,
+    "area": 117600,
+    "gdp": 2000
+  },
+  {
+    "code": "ee",
+    "name": "Estonia",
+    "continent": "Europe",
+    "population": 1369995,
+    "area": 45227,
+    "gdp": 43000
+  },
+  {
+    "code": "sz",
+    "name": "Eswatini",
+    "continent": "Africa",
+    "population": 1235549,
+    "area": 17364,
+    "gdp": 5000
+  },
+  {
+    "code": "et",
+    "name": "Ethiopia",
+    "continent": "Africa",
+    "population": 111652998,
+    "area": 1104300,
+    "gdp": 156000
+  },
+  {
+    "code": "fj",
+    "name": "Fiji",
+    "continent": "Oceania",
+    "population": 900869,
+    "area": 18272,
+    "gdp": 5000
+  },
+  {
+    "code": "fi",
+    "name": "Finland",
+    "continent": "Europe",
+    "population": 5650325,
+    "area": 338455,
+    "gdp": 305000
+  },
+  {
+    "code": "fr",
+    "name": "France",
+    "continent": "Europe",
+    "population": 66351959,
+    "area": 543908,
+    "gdp": 3360000
+  },
+  {
+    "code": "ga",
+    "name": "Gabon",
+    "continent": "Africa",
+    "population": 2469296,
+    "area": 267668,
+    "gdp": 21000
+  },
+  {
+    "code": "gm",
+    "name": "Gambia",
+    "continent": "Africa",
+    "population": 2422712,
+    "area": 10689,
+    "gdp": 2400
+  },
+  {
+    "code": "ge",
+    "name": "Georgia",
+    "continent": "Asia",
+    "population": 4000921,
+    "area": 69700,
+    "gdp": 28000
+  },
+  {
+    "code": "de",
+    "name": "Germany",
+    "continent": "Europe",
+    "population": 83491249,
+    "area": 357114,
+    "gdp": 5010000
+  },
+  {
+    "code": "gh",
+    "name": "Ghana",
+    "continent": "Africa",
+    "population": 33742380,
+    "area": 238533,
+    "gdp": 76000
+  },
+  {
+    "code": "gr",
+    "name": "Greece",
+    "continent": "Europe",
+    "population": 10400720,
+    "area": 131990,
+    "gdp": 239000
+  },
+  {
+    "code": "gd",
+    "name": "Grenada",
+    "continent": "North America",
+    "population": 109021,
+    "area": 344,
+    "gdp": 1300
+  },
+  {
+    "code": "gt",
+    "name": "Guatemala",
+    "continent": "North America",
+    "population": 18079810,
+    "area": 108889,
+    "gdp": 102000
+  },
+  {
+    "code": "gn",
+    "name": "Guinea",
+    "continent": "Africa",
+    "population": 14363931,
+    "area": 245857,
+    "gdp": 21000
+  },
+  {
+    "code": "gw",
+    "name": "Guinea-Bissau",
+    "continent": "Africa",
+    "population": 1781308,
+    "area": 36125,
+    "gdp": 2000
+  },
+  {
+    "code": "gy",
+    "name": "Guyana",
+    "continent": "South America",
+    "population": 772975,
+    "area": 214969,
+    "gdp": 15000
+  },
+  {
+    "code": "ht",
+    "name": "Haiti",
+    "continent": "North America",
+    "population": 11867032,
+    "area": 27750,
+    "gdp": 20000
+  },
+  {
+    "code": "hn",
+    "name": "Honduras",
+    "continent": "North America",
+    "population": 9892632,
+    "area": 112492,
+    "gdp": 34000
+  },
+  {
+    "code": "hu",
+    "name": "Hungary",
+    "continent": "Europe",
+    "population": 9539502,
+    "area": 93028,
+    "gdp": 212000
+  },
+  {
+    "code": "is",
+    "name": "Iceland",
+    "continent": "Europe",
+    "population": 391810,
+    "area": 103000,
+    "gdp": 31000
+  },
+  {
+    "code": "in",
+    "name": "India",
+    "continent": "Asia",
+    "population": 1417492000,
+    "area": 3287263,
+    "gdp": 4130000
+  },
+  {
+    "code": "id",
+    "name": "Indonesia",
+    "continent": "Asia",
+    "population": 284438782,
+    "area": 1904569,
+    "gdp": 1470000
+  },
+  {
+    "code": "ir",
+    "name": "Iran",
+    "continent": "Asia",
+    "population": 85961000,
+    "area": 1648195,
+    "gdp": 388000
+  },
+  {
+    "code": "iq",
+    "name": "Iraq",
+    "continent": "Asia",
+    "population": 46118793,
+    "area": 438317,
+    "gdp": 267000
+  },
+  {
+    "code": "ie",
+    "name": "Ireland",
+    "continent": "Europe",
+    "population": 5458600,
+    "area": 70273,
+    "gdp": 545000
+  },
+  {
+    "code": "il",
+    "name": "Israel",
+    "continent": "Asia",
+    "population": 10134800,
+    "area": 21937,
+    "gdp": 530000
+  },
+  {
+    "code": "it",
+    "name": "Italy",
+    "continent": "Europe",
+    "population": 58927633,
+    "area": 301336,
+    "gdp": 2540000
+  },
+  {
+    "code": "jm",
+    "name": "Jamaica",
+    "continent": "North America",
+    "population": 2825544,
+    "area": 10991,
+    "gdp": 19000
+  },
+  {
+    "code": "jp",
+    "name": "Japan",
+    "continent": "Asia",
+    "population": 123210000,
+    "area": 377930,
+    "gdp": 4280000
+  },
+  {
+    "code": "jo",
+    "name": "Jordan",
+    "continent": "Asia",
+    "population": 11734000,
+    "area": 89342,
+    "gdp": 50000
+  },
+  {
+    "code": "kz",
+    "name": "Kazakhstan",
+    "continent": "Asia",
+    "population": 20426568,
+    "area": 2724900,
+    "gdp": 261000
+  },
+  {
+    "code": "ke",
+    "name": "Kenya",
+    "continent": "Africa",
+    "population": 53330978,
+    "area": 580367,
+    "gdp": 104000
+  },
+  {
+    "code": "ki",
+    "name": "Kiribati",
+    "continent": "Oceania",
+    "population": 120740,
+    "area": 811,
+    "gdp": 300
+  },
+  {
+    "code": "kw",
+    "name": "Kuwait",
+    "continent": "Asia",
+    "population": 4881254,
+    "area": 17818,
+    "gdp": 165000
+  },
+  {
+    "code": "kg",
+    "name": "Kyrgyzstan",
+    "continent": "Asia",
+    "population": 7281800,
+    "area": 199951,
+    "gdp": 12000
+  },
+  {
+    "code": "la",
+    "name": "Laos",
+    "continent": "Asia",
+    "population": 7647000,
+    "area": 236800,
+    "gdp": 15000
+  },
+  {
+    "code": "lv",
+    "name": "Latvia",
+    "continent": "Europe",
+    "population": 1829000,
+    "area": 64559,
+    "gdp": 47000
+  },
+  {
+    "code": "lb",
+    "name": "Lebanon",
+    "continent": "Asia",
+    "population": 5490000,
+    "area": 10452,
+    "gdp": 18000
+  },
+  {
+    "code": "ls",
+    "name": "Lesotho",
+    "continent": "Africa",
+    "population": 2116427,
+    "area": 30355,
+    "gdp": 3000
+  },
+  {
+    "code": "lr",
+    "name": "Liberia",
+    "continent": "Africa",
+    "population": 5248621,
+    "area": 111369,
+    "gdp": 4000
+  },
+  {
+    "code": "ly",
+    "name": "Libya",
+    "continent": "Africa",
+    "population": 7459000,
+    "area": 1759540,
+    "gdp": 45000
+  },
+  {
+    "code": "li",
+    "name": "Liechtenstein",
+    "continent": "Europe",
+    "population": 40900,
+    "area": 160,
+    "gdp": 7000
+  },
+  {
+    "code": "lt",
+    "name": "Lithuania",
+    "continent": "Europe",
+    "population": 2894886,
+    "area": 65300,
+    "gdp": 80000
+  },
+  {
+    "code": "lu",
+    "name": "Luxembourg",
+    "continent": "Europe",
+    "population": 681973,
+    "area": 2586,
+    "gdp": 89000
+  },
+  {
+    "code": "mg",
+    "name": "Madagascar",
+    "continent": "Africa",
+    "population": 31727042,
+    "area": 587041,
+    "gdp": 16000
+  },
+  {
+    "code": "mw",
+    "name": "Malawi",
+    "continent": "Africa",
+    "population": 20734262,
+    "area": 118484,
+    "gdp": 13000
+  },
+  {
+    "code": "my",
+    "name": "Malaysia",
+    "continent": "Asia",
+    "population": 34231700,
+    "area": 330803,
+    "gdp": 447000
+  },
+  {
+    "code": "mv",
+    "name": "Maldives",
+    "continent": "Asia",
+    "population": 515132,
+    "area": 300,
+    "gdp": 6000
+  },
+  {
+    "code": "ml",
+    "name": "Mali",
+    "continent": "Africa",
+    "population": 22395489,
+    "area": 1240192,
+    "gdp": 19000
+  },
+  {
+    "code": "mt",
+    "name": "Malta",
+    "continent": "Europe",
+    "population": 574250,
+    "area": 316,
+    "gdp": 21000
+  },
+  {
+    "code": "mh",
+    "name": "Marshall Islands",
+    "continent": "Oceania",
+    "population": 42418,
+    "area": 181,
+    "gdp": 300
+  },
+  {
+    "code": "mr",
+    "name": "Mauritania",
+    "continent": "Africa",
+    "population": 4927532,
+    "area": 1030700,
+    "gdp": 10000
+  },
+  {
+    "code": "mu",
+    "name": "Mauritius",
+    "continent": "Africa",
+    "population": 1243741,
+    "area": 2040,
+    "gdp": 15000
+  },
+  {
+    "code": "mx",
+    "name": "Mexico",
+    "continent": "North America",
+    "population": 130575786,
+    "area": 1964375,
+    "gdp": 1860000
+  },
+  {
+    "code": "fm",
+    "name": "Micronesia",
+    "continent": "Oceania",
+    "population": 105564,
+    "area": 702,
+    "gdp": 400
+  },
+  {
+    "code": "md",
+    "name": "Moldova",
+    "continent": "Europe",
+    "population": 2749076,
+    "area": 33847,
+    "gdp": 16000
+  },
+  {
+    "code": "mc",
+    "name": "Monaco",
+    "continent": "Europe",
+    "population": 38423,
+    "area": 2,
+    "gdp": 9000
+  },
+  {
+    "code": "mn",
+    "name": "Mongolia",
+    "continent": "Asia",
+    "population": 3544835,
+    "area": 1564110,
+    "gdp": 20000
+  },
+  {
+    "code": "me",
+    "name": "Montenegro",
+    "continent": "Europe",
+    "population": 623327,
+    "area": 13812,
+    "gdp": 7000
+  },
+  {
+    "code": "ma",
+    "name": "Morocco",
+    "continent": "Africa",
+    "population": 36828330,
+    "area": 446550,
+    "gdp": 152000
+  },
+  {
+    "code": "mz",
+    "name": "Mozambique",
+    "continent": "Africa",
+    "population": 34090466,
+    "area": 801590,
+    "gdp": 21000
+  },
+  {
+    "code": "mm",
+    "name": "Myanmar",
+    "continent": "Asia",
+    "population": 51316756,
+    "area": 676578,
+    "gdp": 59000
+  },
+  {
+    "code": "na",
+    "name": "Namibia",
+    "continent": "Africa",
+    "population": 3022401,
+    "area": 825615,
+    "gdp": 13000
+  },
+  {
+    "code": "nr",
+    "name": "Nauru",
+    "continent": "Oceania",
+    "population": 11680,
+    "area": 21,
+    "gdp": 200
+  },
+  {
+    "code": "np",
+    "name": "Nepal",
+    "continent": "Asia",
+    "population": 29911840,
+    "area": 147181,
+    "gdp": 40000
+  },
+  {
+    "code": "nl",
+    "name": "Netherlands",
+    "continent": "Europe",
+    "population": 18100436,
+    "area": 41865,
+    "gdp": 1180000
+  },
+  {
+    "code": "nz",
+    "name": "New Zealand",
+    "continent": "Oceania",
+    "population": 5324700,
+    "area": 268838,
+    "gdp": 252000
+  },
+  {
+    "code": "ni",
+    "name": "Nicaragua",
+    "continent": "North America",
+    "population": 6803886,
+    "area": 130373,
+    "gdp": 17000
+  },
+  {
+    "code": "ne",
+    "name": "Niger",
+    "continent": "Africa",
+    "population": 26312034,
+    "area": 1267000,
+    "gdp": 17000
+  },
+  {
+    "code": "ng",
+    "name": "Nigeria",
+    "continent": "Africa",
+    "population": 223800000,
+    "area": 923768,
+    "gdp": 472000
+  },
+  {
+    "code": "kp",
+    "name": "North Korea",
+    "continent": "Asia",
+    "population": 25950000,
+    "area": 120538,
+    "gdp": 18000
+  },
+  {
+    "code": "mk",
+    "name": "North Macedonia",
+    "continent": "Europe",
+    "population": 1822612,
+    "area": 25713,
+    "gdp": 15000
+  },
+  {
+    "code": "no",
+    "name": "Norway",
+    "continent": "Europe",
+    "population": 5606944,
+    "area": 386224,
+    "gdp": 526000
+  },
+  {
+    "code": "om",
+    "name": "Oman",
+    "continent": "Asia",
+    "population": 5343630,
+    "area": 309500,
+    "gdp": 115000
+  },
+  {
+    "code": "pk",
+    "name": "Pakistan",
+    "continent": "Asia",
+    "population": 241499431,
+    "area": 796095,
+    "gdp": 374000
+  },
+  {
+    "code": "pw",
+    "name": "Palau",
+    "continent": "Oceania",
+    "population": 16733,
+    "area": 459,
+    "gdp": 300
+  },
+  {
+    "code": "pa",
+    "name": "Panama",
+    "continent": "North America",
+    "population": 4064780,
+    "area": 75417,
+    "gdp": 83000
+  },
+  {
+    "code": "pg",
+    "name": "Papua New Guinea",
+    "continent": "Oceania",
+    "population": 11781559,
+    "area": 462840,
+    "gdp": 32000
+  },
+  {
+    "code": "py",
+    "name": "Paraguay",
+    "continent": "South America",
+    "population": 6109644,
+    "area": 406752,
+    "gdp": 44000
+  },
+  {
+    "code": "pe",
+    "name": "Peru",
+    "continent": "South America",
+    "population": 34350244,
+    "area": 1285216,
+    "gdp": 268000
+  },
+  {
+    "code": "ph",
+    "name": "Philippines",
+    "continent": "Asia",
+    "population": 114123600,
+    "area": 342353,
+    "gdp": 435000
+  },
+  {
+    "code": "pl",
+    "name": "Poland",
+    "continent": "Europe",
+    "population": 37392000,
+    "area": 312679,
+    "gdp": 842000
+  },
+  {
+    "code": "pt",
+    "name": "Portugal",
+    "continent": "Europe",
+    "population": 10749635,
+    "area": 92090,
+    "gdp": 287000
+  },
+  {
+    "code": "qa",
+    "name": "Qatar",
+    "continent": "Asia",
+    "population": 3173024,
+    "area": 11586,
+    "gdp": 220000
+  },
+  {
+    "code": "ro",
+    "name": "Romania",
+    "continent": "Europe",
+    "population": 19036031,
+    "area": 238391,
+    "gdp": 351000
+  },
+  {
+    "code": "ru",
+    "name": "Russia",
+    "continent": "Europe",
+    "population": 146028325,
+    "area": 17098246,
+    "gdp": 2540000
+  },
+  {
+    "code": "rw",
+    "name": "Rwanda",
+    "continent": "Africa",
+    "population": 14104969,
+    "area": 26338,
+    "gdp": 14000
+  },
+  {
+    "code": "kn",
+    "name": "Saint Kitts and Nevis",
+    "continent": "North America",
+    "population": 51320,
+    "area": 261,
+    "gdp": 1200
+  },
+  {
+    "code": "lc",
+    "name": "Saint Lucia",
+    "continent": "North America",
+    "population": 184100,
+    "area": 616,
+    "gdp": 2500
+  },
+  {
+    "code": "vc",
+    "name": "Saint Vincent and the Grenadines",
+    "continent": "North America",
+    "population": 110872,
+    "area": 389,
+    "gdp": 1100
+  },
+  {
+    "code": "ws",
+    "name": "Samoa",
+    "continent": "Oceania",
+    "population": 205557,
+    "area": 2842,
+    "gdp": 900
+  },
+  {
+    "code": "sm",
+    "name": "San Marino",
+    "continent": "Europe",
+    "population": 34132,
+    "area": 61,
+    "gdp": 2000
+  },
+  {
+    "code": "st",
+    "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+    "continent": "Africa",
+    "population": 209607,
+    "area": 964,
+    "gdp": 700
+  },
+  {
+    "code": "sa",
+    "name": "Saudi Arabia",
+    "continent": "Asia",
+    "population": 35300280,
+    "area": 2149690,
+    "gdp": 1100000
+  },
+  {
+    "code": "sn",
+    "name": "Senegal",
+    "continent": "Africa",
+    "population": 18593258,
+    "area": 196722,
+    "gdp": 28000
+  },
+  {
+    "code": "rs",
+    "name": "Serbia",
+    "continent": "Europe",
+    "population": 6567783,
+    "area": 77589,
+    "gdp": 75000
+  },
+  {
+    "code": "sc",
+    "name": "Seychelles",
+    "continent": "Africa",
+    "population": 122729,
+    "area": 452,
+    "gdp": 2000
+  },
+  {
+    "code": "sl",
+    "name": "Sierra Leone",
+    "continent": "Africa",
+    "population": 9077691,
+    "area": 71740,
+    "gdp": 4000
+  },
+  {
+    "code": "sg",
+    "name": "Singapore",
+    "continent": "Asia",
+    "population": 6110200,
+    "area": 710,
+    "gdp": 501000
+  },
+  {
+    "code": "sk",
+    "name": "Slovakia",
+    "continent": "Europe",
+    "population": 5413813,
+    "area": 49037,
+    "gdp": 132000
+  },
+  {
+    "code": "si",
+    "name": "Slovenia",
+    "continent": "Europe",
+    "population": 2130638,
+    "area": 20273,
+    "gdp": 68000
+  },
+  {
+    "code": "sb",
+    "name": "Solomon Islands",
+    "continent": "Oceania",
+    "population": 750325,
+    "area": 28896,
+    "gdp": 2000
+  },
+  {
+    "code": "so",
+    "name": "Somalia",
+    "continent": "Africa",
+    "population": 19655000,
+    "area": 637657,
+    "gdp": 8000
+  },
+  {
+    "code": "za",
+    "name": "South Africa",
+    "continent": "Africa",
+    "population": 63100945,
+    "area": 1221037,
+    "gdp": 373000
+  },
+  {
+    "code": "kr",
+    "name": "South Korea",
+    "continent": "Asia",
+    "population": 51159889,
+    "area": 100210,
+    "gdp": 1860000
+  },
+  {
+    "code": "ss",
+    "name": "South Sudan",
+    "continent": "Africa",
+    "population": 15786898,
+    "area": 619745,
+    "gdp": 5000
+  },
+  {
+    "code": "es",
+    "name": "Spain",
+    "continent": "Europe",
+    "population": 49315949,
+    "area": 505992,
+    "gdp": 1890000
+  },
+  {
+    "code": "lk",
+    "name": "Sri Lanka",
+    "continent": "Asia",
+    "population": 21763170,
+    "area": 65610,
+    "gdp": 74000
+  },
+  {
+    "code": "sd",
+    "name": "Sudan",
+    "continent": "Africa",
+    "population": 51662000,
+    "area": 1886068,
+    "gdp": 31000
+  },
+  {
+    "code": "sr",
+    "name": "Suriname",
+    "continent": "South America",
+    "population": 616500,
+    "area": 163820,
+    "gdp": 4500
+  },
+  {
+    "code": "se",
+    "name": "Sweden",
+    "continent": "Europe",
+    "population": 10605098,
+    "area": 450295,
+    "gdp": 599000
+  },
+  {
+    "code": "ch",
+    "name": "Switzerland",
+    "continent": "Europe",
+    "population": 9082848,
+    "area": 41284,
+    "gdp": 906000
+  },
+  {
+    "code": "sy",
+    "name": "Syria",
+    "continent": "Asia",
+    "population": 25620000,
+    "area": 185180,
+    "gdp": 9000
+  },
+  {
+    "code": "tj",
+    "name": "Tajikistan",
+    "continent": "Asia",
+    "population": 10499000,
+    "area": 143100,
+    "gdp": 12000
+  },
+  {
+    "code": "tz",
+    "name": "Tanzania",
+    "continent": "Africa",
+    "population": 68153004,
+    "area": 947303,
+    "gdp": 85000
+  },
+  {
+    "code": "th",
+    "name": "Thailand",
+    "continent": "Asia",
+    "population": 65859640,
+    "area": 513120,
+    "gdp": 548000
+  },
+  {
+    "code": "tl",
+    "name": "Timor-Leste",
+    "continent": "Asia",
+    "population": 1391221,
+    "area": 14874,
+    "gdp": 3000
+  },
+  {
+    "code": "tg",
+    "name": "Togo",
+    "continent": "Africa",
+    "population": 8095498,
+    "area": 56785,
+    "gdp": 9000
+  },
+  {
+    "code": "to",
+    "name": "Tonga",
+    "continent": "Oceania",
+    "population": 100179,
+    "area": 747,
+    "gdp": 500
+  },
+  {
+    "code": "tt",
+    "name": "Trinidad and Tobago",
+    "continent": "North America",
+    "population": 1367764,
+    "area": 5130,
+    "gdp": 28000
+  },
+  {
+    "code": "tn",
+    "name": "Tunisia",
+    "continent": "Africa",
+    "population": 11972169,
+    "area": 163610,
+    "gdp": 49000
+  },
+  {
+    "code": "tr",
+    "name": "Turkey",
+    "continent": "Asia",
+    "population": 85664944,
+    "area": 783562,
+    "gdp": 1340000
+  },
+  {
+    "code": "tm",
+    "name": "Turkmenistan",
+    "continent": "Asia",
+    "population": 7057841,
+    "area": 488100,
+    "gdp": 82000
+  },
+  {
+    "code": "tv",
+    "name": "Tuvalu",
+    "continent": "Oceania",
+    "population": 10643,
+    "area": 26,
+    "gdp": 60
+  },
+  {
+    "code": "ug",
+    "name": "Uganda",
+    "continent": "Africa",
+    "population": 45905417,
+    "area": 241550,
+    "gdp": 50000
+  },
+  {
+    "code": "ua",
+    "name": "Ukraine",
+    "continent": "Europe",
+    "population": 32862000,
+    "area": 603550,
+    "gdp": 178000
+  },
+  {
+    "code": "ae",
+    "name": "United Arab Emirates",
+    "continent": "Asia",
+    "population": 11294243,
+    "area": 83600,
+    "gdp": 499000
+  },
+  {
+    "code": "gb",
+    "name": "United Kingdom",
+    "continent": "Europe",
+    "population": 69281437,
+    "area": 244376,
+    "gdp": 3960000
+  },
+  {
+    "code": "us",
+    "name": "United States",
+    "continent": "North America",
+    "population": 340110988,
+    "area": 9525067,
+    "gdp": 30620000
+  },
+  {
+    "code": "uy",
+    "name": "Uruguay",
+    "continent": "South America",
+    "population": 3499451,
+    "area": 181034,
+    "gdp": 77000
+  },
+  {
+    "code": "uz",
+    "name": "Uzbekistan",
+    "continent": "Asia",
+    "population": 37859698,
+    "area": 447400,
+    "gdp": 90000
+  },
+  {
+    "code": "vu",
+    "name": "Vanuatu",
+    "continent": "Oceania",
+    "population": 321409,
+    "area": 12189,
+    "gdp": 1100
+  },
+  {
+    "code": "ve",
+    "name": "Venezuela",
+    "continent": "South America",
+    "population": 28517000,
+    "area": 916445,
+    "gdp": 98000
+  },
+  {
+    "code": "vn",
+    "name": "Vietnam",
+    "continent": "Asia",
+    "population": 101343800,
+    "area": 331212,
+    "gdp": 449000
+  },
+  {
+    "code": "ye",
+    "name": "Yemen",
+    "continent": "Asia",
+    "population": 32684503,
+    "area": 527968,
+    "gdp": 21000
+  },
+  {
+    "code": "zm",
+    "name": "Zambia",
+    "continent": "Africa",
+    "population": 19693423,
+    "area": 752612,
+    "gdp": 29000
+  },
+  {
+    "code": "zw",
+    "name": "Zimbabwe",
+    "continent": "Africa",
+    "population": 17073087,
+    "area": 390757,
+    "gdp": 28000
+  }
+]

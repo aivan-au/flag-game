@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.2.2" />
+    <link rel="stylesheet" href="styles.css?v=1.2.4" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#1a1a2e" />
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
@@ -33,21 +33,59 @@
         <div class="screen-content">
           <div class="pack-grid" id="pack-options">
             <!-- Pack cards with images -->
-            <button class="pack-card selected" data-pack="largest">
-              <img class="pack-img" src="assets/images/large.png" alt="Largest" />
-              <span class="pack-label">Largest</span>
+            <button class="pack-card selected" data-pack="world">
+              <img class="pack-img" src="assets/images/world.png" alt="World" />
+              <span class="pack-label">World</span>
             </button>
-            <button class="pack-card" data-pack="richest">
-              <img class="pack-img" src="assets/images/rich.png" alt="Richest" />
-              <span class="pack-label">Richest</span>
+
+            <button class="pack-card" data-pack="oceania">
+                <img class="pack-img" src="assets/images/australia.png" alt="Oceania" />
+                <span class="pack-label">Oceania</span>
             </button>
+
             <button class="pack-card" data-pack="europe">
-              <img class="pack-img" src="assets/images/europe.png" alt="Europe" />
-              <span class="pack-label">Europe</span>
+                <img class="pack-img" src="assets/images/europe.png" alt="Europe" />
+                <span class="pack-label">Europe</span>
             </button>
+
+            <button class="pack-card" data-pack="asia">
+                <img class="pack-img" src="assets/images/asia.png" alt="Asia" />
+                <span class="pack-label">Asia</span>
+            </button>
+
+            <button class="pack-card" data-pack="africa">
+              <img class="pack-img" src="assets/images/africa.png" alt="Africa" />
+              <span class="pack-label">Africa</span>
+            </button>
+
             <button class="pack-card" data-pack="southAmerica">
-              <img class="pack-img" src="assets/images/south_america.png" alt="South America" />
-              <span class="pack-label">S. America</span>
+                <img class="pack-img" src="assets/images/south_america.png" alt="South America" />
+                <span class="pack-label">S. America</span>
+            </button>
+
+            <button class="pack-card" data-pack="northAmerica">
+              <img class="pack-img" src="assets/images/north_america.png" alt="North America" />
+              <span class="pack-label">N. America</span>
+            </button>
+
+            <button class="pack-card" data-pack="worldFull">
+              <img class="pack-img" src="assets/images/world_full.png" alt="All World" />
+              <span class="pack-label">All World</span>
+            </button>
+
+            <button class="pack-card" data-pack="europeFull">
+              <img class="pack-img" src="assets/images/europe_full.png" alt="All Europe" />
+              <span class="pack-label">All Europe</span>
+            </button>
+
+            <button class="pack-card" data-pack="asiaFull">
+              <img class="pack-img" src="assets/images/asia_full.png" alt="All Asia" />
+              <span class="pack-label">All Asia</span>
+            </button>
+
+            <button class="pack-card" data-pack="africaFull">
+              <img class="pack-img" src="assets/images/africa_full.png" alt="All Africa" />
+              <span class="pack-label">All Africa</span>
             </button>
           </div>
         </div>
@@ -189,12 +227,24 @@
 
     <!-- Game scripts -->
     <script src="countries.js?v=1.2.2"></script>
-    <script src="app.js?v=1.2.2"></script>
+    <script src="app.js?v=1.2.4"></script>
 
     <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js');
+        const devMode = new URLSearchParams(location.search).has('dev');
+        if (devMode) {
+          // Unregister service worker and clear caches in dev mode
+          navigator.serviceWorker.getRegistrations().then(registrations => {
+            registrations.forEach(r => r.unregister());
+          });
+          caches.keys().then(names => {
+            names.forEach(name => caches.delete(name));
+          });
+          console.log('Dev mode: Service worker unregistered, caches cleared');
+        } else {
+          navigator.serviceWorker.register('./sw.js');
+        }
       }
     </script>
   </body>

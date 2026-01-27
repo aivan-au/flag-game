@@ -150,9 +150,9 @@ body {
 /* Pack Grid - responsive square cards */
 .pack-grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(4, auto);
   justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .pack-card {
@@ -173,8 +173,8 @@ body {
 }
 
 .pack-img {
-  width: 120px;
-  height: 120px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   border-radius: var(--radius-md);
 }
@@ -204,7 +204,17 @@ body {
    ========================================================================== */
 
 .game-screen .screen-header {
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-2);
+}
+
+.game-screen .screen-header .btn-icon {
+  align-self: flex-start;
+}
+
+.game-screen .progress-bar {
+  justify-content: center;
 }
 
 .game-screen .screen-footer {
@@ -221,8 +231,8 @@ body {
 }
 
 .progress-pip {
-  width: 20px;
-  height: 8px;
+  width: 14px;
+  height: 6px;
   background: var(--color-border);
   border-radius: var(--radius-full);
   transition: background var(--transition-fast), transform var(--transition-fast);
@@ -242,7 +252,7 @@ body {
   }
 
   .progress-pip {
-    width: 28px;
+    width: 26px;
     height: 10px;
   }
 }
@@ -325,7 +335,7 @@ body {
 .option.inactive {
   opacity: 0.4;
   border-color: var(--color-border);
-  color: var(--color-text-muted);
+  color: var(--color-muted);
 }
 
 /* ==========================================================================
@@ -603,8 +613,8 @@ body {
   }
 
   .pack-img {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
   }
 
   .pack-label {

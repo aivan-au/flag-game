@@ -417,23 +417,22 @@ const resetGameState = () => {
 
 const getSelectedPackId = () => {
   const selected = elements.packOptions.querySelector(".pack-card.selected");
-  return selected ? selected.dataset.pack : "europe";
+  return selected ? selected.dataset.pack : "world";
 };
 
 const startGame = () => {
   showScreen("game");
-  resetGameState();
 
   state.gameActive = true;
   state.selectedPack = packs[getSelectedPackId()];
   state.pool = getCountryPool();
   state.audioEnabled = state.audioAllowed;
 
-  if (state.pool.length < CONFIG.totalQuestions) {
-    console.error(`Not enough countries to play ${CONFIG.totalQuestions} rounds.`);
-    return;
-  }
+  // Set round size to min of selected option and available countries in pack
+  const requestedQuestions = getQuestionsPerRound();
+  CONFIG.totalQuestions = Math.min(requestedQuestions, state.pool.length);
 
+  resetGameState();
   nextQuestion();
 };
 

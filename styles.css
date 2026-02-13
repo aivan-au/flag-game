@@ -137,14 +137,144 @@ body {
    START SCREEN
    ========================================================================== */
 
-/* Start screen header - align button to left */
+/* Start screen header - settings left, toggle right */
 .start-screen .screen-header {
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 /* End screen header - align button to left */
 .end-screen .screen-header {
   justify-content: flex-start;
+}
+
+/* Header toggle row (Progression) */
+.start-header {
+  justify-content: space-between;
+}
+
+.header-toggle {
+  padding: 0;
+  gap: var(--space-3);
+}
+
+.header-toggle .toggle-label {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Challenge Path */
+.challenge-path {
+  width: 100%;
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+}
+
+.path-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: var(--space-2) 0 var(--space-4);
+}
+
+.path-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: default;
+  --offset: 0px;
+  transform: translateX(var(--offset));
+  transition: transform var(--transition-fast);
+}
+
+.path-level.unlocked,
+.path-level.completed {
+  cursor: pointer;
+}
+
+.path-level.unlocked:hover,
+.path-level.completed:hover {
+  transform: translateX(var(--offset)) scale(1.08);
+}
+
+.path-node {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Active (unlocked) — white number on primary */
+.path-level.unlocked .path-node {
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(67, 0, 152, 0.2);
+}
+
+/* Completed — white number on gold */
+.path-level.completed .path-node {
+  background: #EEBA09;
+  box-shadow: 0 0 0 4px rgba(238, 186, 9, 0.25);
+}
+
+/* Locked — greyish */
+.path-level.locked .path-node {
+  background: var(--color-border);
+}
+
+.path-node-number {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.path-level.locked .path-node-number {
+  color: var(--color-muted);
+}
+
+.path-lock {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+/* Review / milestone challenges — larger node (1.5x) */
+.path-level.review .path-node {
+  width: 84px;
+  height: 84px;
+}
+
+.path-level.review .path-node-number {
+  font-size: var(--text-2xl);
+}
+
+/* Connectors between levels */
+.path-connector {
+  display: flex;
+  justify-content: center;
+  height: 36px;
+  width: 120px;
+}
+
+.path-line {
+  width: 120px;
+  height: 36px;
+}
+
+.path-level.unlocked + .path-connector .path-line path {
+  stroke: var(--color-primary);
+  opacity: 0.4;
+}
+
+.path-level.completed + .path-connector .path-line path {
+  stroke: #EEBA09;
+  opacity: 0.5;
 }
 
 /* Pack Grid - responsive square cards */

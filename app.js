@@ -60,6 +60,9 @@ const state = {
   selectedPack: null,
   results: [], // Track correct/wrong for each question
   gameActive: false, // Track if game is in progress (for cancelling async operations)
+  // Progression mode
+  isProgression: false,
+  progressionChallenge: null, // index into progressionChallenges
 };
 
 // Audio State
@@ -87,6 +90,11 @@ const showScreen = (screen) => {
   elements.startScreen.classList.toggle("hidden", screen !== "start");
   elements.gameScreen.classList.toggle("hidden", screen !== "game");
   elements.endScreen.classList.toggle("hidden", screen !== "end");
+
+  // Re-render progression path when returning to start screen
+  if (screen === "start" && window.renderProgressionPath) {
+    window.renderProgressionPath();
+  }
 };
 
 const initProgressBar = () => {
@@ -113,12 +121,49 @@ const updateEndScreen = () => {
 
   elements.resultScore.textContent = `${score} / ${total}`;
 
-  if (percentage >= CONFIG.winThresholdPercent) {
-    elements.resultIcon.src = "assets/images/cup.png";
-    elements.resultTitle.textContent = "Congratulations!";
+  if (state.isProgression) {
+    const ch = window.progressionChallenges[state.progressionChallenge];
+    const passed = percentage >= ch.passPercent;
+
+    if (passed) {
+      elements.resultIcon.src = "assets/images/cup.png";
+      elements.resultTitle.textContent = "Challenge complete!";
+      elements.playAgainButton.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+        Continue`;
+    } else {
+      elements.resultIcon.src = "assets/images/lamp.png";
+      elements.resultTitle.textContent = "Not quite — try again!";
+      elements.playAgainButton.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+          <path d="M21 3v5h-5"></path>
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+          <path d="M8 16H3v5"></path>
+        </svg>
+        Try Again`;
+    }
   } else {
-    elements.resultIcon.src = "assets/images/lamp.png";
-    elements.resultTitle.textContent = "You've learned a lot!";
+    // Standard mode
+    if (percentage >= CONFIG.winThresholdPercent) {
+      elements.resultIcon.src = "assets/images/cup.png";
+      elements.resultTitle.textContent = "Congratulations!";
+    } else {
+      elements.resultIcon.src = "assets/images/lamp.png";
+      elements.resultTitle.textContent = "You've learned a lot!";
+    }
+    // Reset button to default
+    elements.playAgainButton.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+        <path d="M21 3v5h-5"></path>
+        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+        <path d="M8 16H3v5"></path>
+      </svg>
+      Play Again`;
   }
 };
 
@@ -383,8 +428,34 @@ const handleGuess = async (code, button) => {
   }
 };
 
+// Progression persistence
+const getProgressionCompleted = () => {
+  const saved = localStorage.getItem("progressionCompleted");
+  return saved ? parseInt(saved, 10) : 0;
+};
+
+const setProgressionCompleted = (count) => {
+  localStorage.setItem("progressionCompleted", count);
+};
+
 const endGame = async () => {
   state.gameActive = false; // Game is over
+
+  // Save progression if passed
+  if (state.isProgression) {
+    const ch = window.progressionChallenges[state.progressionChallenge];
+    const percentage = (state.score / CONFIG.totalQuestions) * 100;
+    const passed = percentage >= ch.passPercent;
+
+    if (passed) {
+      const completed = getProgressionCompleted();
+      // Only advance if this is the current frontier
+      if (state.progressionChallenge === completed) {
+        setProgressionCompleted(completed + 1);
+      }
+    }
+  }
+
   updateEndScreen();
   showScreen("end");
 
@@ -424,6 +495,8 @@ const startGame = () => {
   showScreen("game");
 
   state.gameActive = true;
+  state.isProgression = false;
+  state.progressionChallenge = null;
   state.selectedPack = packs[getSelectedPackId()];
   state.pool = getCountryPool();
   state.audioEnabled = state.audioAllowed;
@@ -431,6 +504,32 @@ const startGame = () => {
   // Set round size to min of selected option and available countries in pack
   const requestedQuestions = getQuestionsPerRound();
   CONFIG.totalQuestions = Math.min(requestedQuestions, state.pool.length);
+
+  resetGameState();
+  nextQuestion();
+};
+
+// Start a progression challenge with a specific set of country codes and question count
+// Exposed on window so the inline progression script can call it
+window.startProgressionChallenge = (challengeIndex) => {
+  const ch = window.progressionChallenges[challengeIndex];
+  if (!ch) return;
+
+  showScreen("game");
+
+  state.gameActive = true;
+  state.isProgression = true;
+  state.progressionChallenge = challengeIndex;
+  state.audioAllowed = true;
+  startBackgroundAudio();
+  state.audioEnabled = state.audioAllowed;
+
+  // Build pool from the provided codes
+  const codeSet = new Set(ch.codes);
+  state.pool = countries.filter((c) => codeSet.has(c.code));
+  state.selectedPack = { codes: ch.codes };
+
+  CONFIG.totalQuestions = Math.min(ch.questionsShown, state.pool.length);
 
   resetGameState();
   nextQuestion();
@@ -462,7 +561,26 @@ elements.exitButton.addEventListener("click", () => {
 });
 
 elements.playAgainButton.addEventListener("click", () => {
-  startGame();
+  if (state.isProgression) {
+    const ch = window.progressionChallenges[state.progressionChallenge];
+    const percentage = (state.score / CONFIG.totalQuestions) * 100;
+    const passed = percentage >= ch.passPercent;
+
+    if (passed) {
+      // Continue to next challenge
+      const nextIndex = state.progressionChallenge + 1;
+      if (nextIndex < window.progressionChallenges.length) {
+        window.startProgressionChallenge(nextIndex);
+      } else {
+        showScreen("start");
+      }
+    } else {
+      // Retry same challenge
+      window.startProgressionChallenge(state.progressionChallenge);
+    }
+  } else {
+    startGame();
+  }
 });
 
 elements.endExitButton.addEventListener("click", () => {

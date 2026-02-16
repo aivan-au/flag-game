@@ -1,12 +1,8 @@
-const CACHE_NAME = 'flag-game-1.3.0';
+const CACHE_NAME = 'flag-game-1.4.0';
 
 const CORE_ASSETS = [
   './',
   './index.html',
-  './styles.css',
-  './app.js',
-  './countries.js',
-  './challenges.js',
   './manifest.json',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',

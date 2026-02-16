@@ -1,7 +1,7 @@
 // Hardcoded progression challenges — countries ordered by rank, grouped into
 // chunks of 5 with a review challenge after every 4 regular ones.
 // DO NOT reorder or modify — player progress in localStorage references these by index.
-const progressionChallenges = [
+export const progressionChallenges = [
   { type: "regular", codes: ["in","ru","us","ca","cn"], questionsShown: 5, passPercent: 100 },
   { type: "regular", codes: ["de","id","jp","br","pk"], questionsShown: 5, passPercent: 100 },
   { type: "regular", codes: ["au","ng","gb","fr","ar"], questionsShown: 5, passPercent: 100 },
@@ -53,5 +53,3 @@ const progressionChallenges = [
   { type: "review", codes: ["in","ru","us","ca","cn","de","id","jp","br","pk","au","ng","gb","fr","ar","bd","it","kz","dz","mx","cd","ph","sa","es","et","kr","eg","sd","ly","vn","ir","tr","mn","nl","pe","td","ch","ne","pl","tz","ao","be","ml","th","za","se","co","ie","ke","bo","il","mr","no","at","mm","sg","ae","ve","na","iq","my","mz","ug","af","cl","dk","uz","zm","ma","ro","so","cf","ss","cz","ua","mg","bw","fi","gh","pt","ye","ci","np","nz","cm","tm","gr","pg","qa","hu","cu","kp","sy","bf","kw","py","lk","zw","mw","sk","do","ec","om","cg","bg","gt","sn","lu","kh","pa","hr","gn","ga","lt","rw","bj","az","bi","tn","uy","ht","rs","la","by","gy","jo","cr","kg","si","sr","tj","lv","hn","bh","ni","ee","sv","er","sl","tg","cy","lr","is","ba","ge","tt","am","al","mt","lb","jm","md","bn","bt","gw","mu","mk","ls","bs","sb","gm","gq","dj","bz","mc","fj","tl","li","sz","me","bb","mv","km","vu","ad","cv","ws","lc","st","ki","ag","dm","to","fm","sm","sc","pw","vc","gd","kn","mh","tv","nr"], questionsShown: 10, passPercent: 80 },
 ];
 
-// Expose on window for cross-script access
-window.progressionChallenges = progressionChallenges;

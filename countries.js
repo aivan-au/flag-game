@@ -1,4 +1,4 @@
-const countries = [
+export const countries = [
     { code: "af", name: "Afghanistan", continent: "Asia", population: 43844000, area: 652230, gdp: 14000, population_rank: 36, area_rank: 40, gdp_rank: 137, rank: 36 },
     { code: "al", name: "Albania", continent: "Europe", population: 2363314, area: 28748, gdp: 23000, population_rank: 141, area_rank: 140, gdp_rank: 113, rank: 113 },
     { code: "dz", name: "Algeria", continent: "Africa", population: 47400000, area: 2381741, gdp: 239000, population_rank: 32, area_rank: 10, gdp_rank: 52, rank: 10 },
@@ -219,7 +219,7 @@ const countries = [
     { code: "zw", name: "Zimbabwe", continent: "Africa", population: 17073087, area: 390757, gdp: 28000, population_rank: 73, area_rank: 60, gdp_rank: 111, rank: 60 }
 ];
 
-const packs = {
+export const packs = {
   world: {
     name: "World Top 20",
     codes: ["in", "ru", "us", "ca", "cn", "de", "id", "jp", "br", "pk", "au", "ng", "gb", "fr", "ar", "bd", "it", "kz", "dz", "mx"]

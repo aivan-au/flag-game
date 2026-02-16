@@ -1,3 +1,6 @@
+import { countries, packs } from './countries.js';
+import { progressionChallenges } from './challenges.js';
+
 // DOM Elements
 const elements = {
   startScreen: document.getElementById("start-screen"),
@@ -122,7 +125,7 @@ const updateEndScreen = () => {
   elements.resultScore.textContent = `${score} / ${total}`;
 
   if (state.isProgression) {
-    const ch = window.progressionChallenges[state.progressionChallenge];
+    const ch = progressionChallenges[state.progressionChallenge];
     const passed = percentage >= ch.passPercent;
 
     if (passed) {
@@ -443,7 +446,7 @@ const endGame = async () => {
 
   // Save progression if passed
   if (state.isProgression) {
-    const ch = window.progressionChallenges[state.progressionChallenge];
+    const ch = progressionChallenges[state.progressionChallenge];
     const percentage = (state.score / CONFIG.totalQuestions) * 100;
     const passed = percentage >= ch.passPercent;
 
@@ -512,7 +515,7 @@ const startGame = () => {
 // Start a progression challenge with a specific set of country codes and question count
 // Exposed on window so the inline progression script can call it
 window.startProgressionChallenge = (challengeIndex) => {
-  const ch = window.progressionChallenges[challengeIndex];
+  const ch = progressionChallenges[challengeIndex];
   if (!ch) return;
 
   showScreen("game");
@@ -562,14 +565,14 @@ elements.exitButton.addEventListener("click", () => {
 
 elements.playAgainButton.addEventListener("click", () => {
   if (state.isProgression) {
-    const ch = window.progressionChallenges[state.progressionChallenge];
+    const ch = progressionChallenges[state.progressionChallenge];
     const percentage = (state.score / CONFIG.totalQuestions) * 100;
     const passed = percentage >= ch.passPercent;
 
     if (passed) {
       // Continue to next challenge
       const nextIndex = state.progressionChallenge + 1;
-      if (nextIndex < window.progressionChallenges.length) {
+      if (nextIndex < progressionChallenges.length) {
         window.startProgressionChallenge(nextIndex);
       } else {
         showScreen("start");
@@ -623,3 +626,129 @@ CONFIG.totalQuestions = savedQuestions;
 elements.questionsSelect.querySelectorAll(".segment-btn").forEach((btn) => {
   btn.classList.toggle("selected", parseInt(btn.dataset.value, 10) === savedQuestions);
 });
+
+// ====================================================================
+// Options modal
+// ====================================================================
+document.getElementById('options-btn').addEventListener('click', () => {
+  document.getElementById('options-modal').classList.remove('hidden');
+});
+document.getElementById('close-modal').addEventListener('click', () => {
+  document.getElementById('options-modal').classList.add('hidden');
+});
+
+// ====================================================================
+// Progression mode toggle
+// ====================================================================
+document.getElementById('progression-toggle').addEventListener('change', (e) => {
+  const packGrid = document.getElementById('pack-options');
+  const challengePath = document.getElementById('challenge-path');
+  const startBtn = document.getElementById('start-btn');
+
+  if (e.target.checked) {
+    packGrid.classList.add('hidden');
+    challengePath.classList.remove('hidden');
+    startBtn.classList.add('hidden');
+  } else {
+    packGrid.classList.remove('hidden');
+    challengePath.classList.add('hidden');
+    startBtn.classList.remove('hidden');
+  }
+});
+
+// ====================================================================
+// Progression path rendering
+// ====================================================================
+(function() {
+  const GROUP_SIZE = 5;
+  const OFFSET = 60;
+  const GROUP_OFFSETS_RIGHT = [0, OFFSET, -OFFSET, OFFSET, 0];
+  const GROUP_OFFSETS_LEFT  = [0, -OFFSET, OFFSET, -OFFSET, 0];
+
+  const lockSvg = '<svg class="path-lock" width="14" height="14" viewBox="0 0 24 24" fill="var(--color-muted)" stroke="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="var(--color-muted)" stroke-width="2" stroke-linecap="round"/></svg>';
+
+  function makeConnector(fromX, toX) {
+    const svgFrom = 60 + (fromX / OFFSET) * 40;
+    const svgTo = 60 + (toX / OFFSET) * 40;
+    const cpX = (svgFrom + svgTo) / 2;
+    return `<div class="path-connector"><svg class="path-line" viewBox="0 0 120 40" preserveAspectRatio="none"><path d="M${svgFrom} 0 Q${cpX} 20 ${svgTo} 40" stroke="var(--color-border)" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>`;
+  }
+
+  const container = document.getElementById('path-container');
+
+  function renderPath() {
+    const completed = parseInt(localStorage.getItem('progressionCompleted') || '0', 10);
+    let html = '';
+
+    progressionChallenges.forEach((ch, i) => {
+      const num = i + 1;
+      const isReview = ch.type === 'review';
+      const groupIndex = Math.floor(i / GROUP_SIZE);
+      const posInGroup = i % GROUP_SIZE;
+      const offsets = groupIndex % 2 === 0 ? GROUP_OFFSETS_RIGHT : GROUP_OFFSETS_LEFT;
+      const isLastChallenge = i === progressionChallenges.length - 1;
+      const thisOffset = (isLastChallenge && isReview) ? 0 : offsets[posInGroup];
+
+      let nodeState;
+      if (i < completed) nodeState = 'completed';
+      else if (i === completed) nodeState = 'unlocked';
+      else nodeState = 'locked';
+
+      if (i > 0 && posInGroup === 0) {
+        html += makeConnector(0, 0);
+      } else if (i > 0) {
+        const prevGroupIndex = Math.floor((i - 1) / GROUP_SIZE);
+        const prevOffsets = prevGroupIndex % 2 === 0 ? GROUP_OFFSETS_RIGHT : GROUP_OFFSETS_LEFT;
+        const prevIsLast = (i - 1) === progressionChallenges.length - 1;
+        const prevChIsReview = progressionChallenges[i - 1].type === 'review';
+        const prevOffset = (prevIsLast && prevChIsReview) ? 0 : prevOffsets[(i - 1) % GROUP_SIZE];
+        html += makeConnector(prevOffset, thisOffset);
+      }
+
+      const extras = [];
+      if (nodeState === 'locked') extras.push(lockSvg);
+
+      html += `<div class="path-level ${nodeState}${isReview ? ' review' : ''}" data-level="${num}" style="--offset: ${thisOffset}px">`;
+      html += `<div class="path-node">`;
+      html += `<span class="path-node-number">${num}</span>`;
+      html += extras.join('');
+      html += `</div>`;
+      html += `</div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  // Initial render
+  renderPath();
+
+  // Re-render when returning to start screen so progress is reflected
+  window.renderProgressionPath = renderPath;
+
+  container.addEventListener('click', (e) => {
+    const level = e.target.closest('.path-level');
+    if (!level) return;
+    if (level.classList.contains('locked')) return;
+
+    const levelNum = parseInt(level.dataset.level, 10);
+    window.startProgressionChallenge(levelNum - 1);
+  });
+})();
+
+// ====================================================================
+// Service Worker Registration
+// ====================================================================
+if ('serviceWorker' in navigator) {
+  const devMode = new URLSearchParams(location.search).has('dev') || import.meta.env.DEV;
+  if (devMode) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      registrations.forEach(r => r.unregister());
+    });
+    caches.keys().then(names => {
+      names.forEach(name => caches.delete(name));
+    });
+    console.log('Dev mode: Service worker unregistered, caches cleared');
+  } else {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+  }
+}

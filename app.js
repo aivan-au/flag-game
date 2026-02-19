@@ -181,7 +181,7 @@ const stopAudio = () => {
 
 const getMusicEnabled = () => {
   const saved = localStorage.getItem("musicEnabled");
-  return saved === null ? true : saved === "true";
+  return saved === null ? false : saved === "true";
 };
 
 const setMusicEnabled = (enabled) => {
@@ -200,7 +200,7 @@ const setQuestionsPerRound = (count) => {
 
 const getVoiceEnabled = () => {
   const saved = localStorage.getItem("voiceEnabled");
-  return saved === null ? true : saved === "true";
+  return saved === null ? false : saved === "true";
 };
 
 const setVoiceEnabled = (enabled) => {
@@ -210,7 +210,7 @@ const setVoiceEnabled = (enabled) => {
 
 const getAutoAdvance = () => {
   const saved = localStorage.getItem("autoAdvance");
-  return saved === "true";
+  return saved === null ? true : saved === "true";
 };
 
 const setAutoAdvance = (enabled) => {
@@ -570,13 +570,9 @@ elements.playAgainButton.addEventListener("click", () => {
     const passed = percentage >= ch.passPercent;
 
     if (passed) {
-      // Continue to next challenge
-      const nextIndex = state.progressionChallenge + 1;
-      if (nextIndex < progressionChallenges.length) {
-        window.startProgressionChallenge(nextIndex);
-      } else {
-        showScreen("start");
-      }
+      // Return to progression tree so the user sees the node turn gold
+      window._justCompletedIndex = state.progressionChallenge;
+      showScreen("start");
     } else {
       // Retry same challenge
       window.startProgressionChallenge(state.progressionChallenge);
@@ -678,6 +674,7 @@ document.getElementById('progression-toggle').addEventListener('change', (e) => 
 
   function renderPath() {
     const completed = parseInt(localStorage.getItem('progressionCompleted') || '0', 10);
+    const justDone = window._justCompletedIndex;
     let html = '';
 
     progressionChallenges.forEach((ch, i) => {
@@ -690,7 +687,8 @@ document.getElementById('progression-toggle').addEventListener('change', (e) => 
       const thisOffset = (isLastChallenge && isReview) ? 0 : offsets[posInGroup];
 
       let nodeState;
-      if (i < completed) nodeState = 'completed';
+      if (i === justDone) nodeState = 'unlocked'; // render purple so animation starts correctly
+      else if (i < completed) nodeState = 'completed';
       else if (i === completed) nodeState = 'unlocked';
       else nodeState = 'locked';
 
@@ -717,6 +715,24 @@ document.getElementById('progression-toggle').addEventListener('change', (e) => 
     });
 
     container.innerHTML = html;
+
+    // If returning from a just-completed challenge, animate that node
+    if (justDone != null) {
+      window._justCompletedIndex = null;
+      const completedNode = container.querySelector(`.path-level[data-level="${justDone + 1}"]`);
+      if (completedNode) {
+        // Scroll it into view first, then trigger the animation
+        completedNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          completedNode.classList.add('just-completed');
+          // Swap to completed state after animation finishes
+          completedNode.addEventListener('animationend', () => {
+            completedNode.classList.remove('just-completed', 'unlocked');
+            completedNode.classList.add('completed');
+          }, { once: true });
+        }, 400);
+      }
+    }
   }
 
   // Initial render
